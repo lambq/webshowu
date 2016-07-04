@@ -10,7 +10,6 @@
   <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 
   <div class="am-g">
-    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
       @if(count($errors) > 0)
         <div class="am-alert am-alert-danger" data-am-alert>
           <button type="button" class="am-close">&times;</button>
@@ -21,6 +20,7 @@
           </p>
         </div>
       @endif
+
       <form class="am-form" name="myfrom" id="myfrom" method="post" action="{{ url('/edit_art') }}">
         <fieldset>
           {{ csrf_field() }}
@@ -76,6 +76,5 @@
           <p><button type="submit" class="am-btn am-btn-default">提交</button></p>
         </fieldset>
       </form>
-    </div>
   </div>
 @endsection

@@ -10,19 +10,27 @@ use App\Category, App\Page, App\Article, App\Website;
 
 class WebdirController extends Controller
 {
-    //推荐资讯
+	/**
+	 * 推荐资讯
+	 */
     public $art_list;
-    //推荐站点
+	/**
+	 * 推荐站点
+	 */
     public $site_list;
-
-    public function __construct(){
+	/**
+	 * 初始化数据
+	 */
+    public function __construct()
+	{
       $this->art_list = Article::where(['art_status'=>'3'])->orderBy('art_views','desc')->take('10')->get();
-      //$this->art_list = Articles::where(['art_isbest'=>'1','art_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
       $this->site_list = Website::where(['web_isbest'=>'1','web_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
     }
-
-    //站点首页
-    function Index (Request $request){
+	/**
+	 * 站点首页
+	 */
+    function index(Request $request)
+	{
         $data['site_title'] = '秀目录_网站目录_网站分类目录_网站目录_分类目录';
         $data['site_keywords'] = '秀目录,网站目录,免费网站目录,分类目录,网站分类目录';
         $data['site_description'] = '秀目录网站目录是全人工编辑的开放式网站分类目录，收录国内外、各行业优秀网站，免费网站目录,网站分类目录, 网站提交入口。旨在为用户提供优秀网站目录检索、网站推广服务。';
@@ -31,9 +39,11 @@ class WebdirController extends Controller
         $data['site_nav'] = 'webdir';
         return view('front/webdir_index',$data);
     }
-
-    //站点列表
-    function Lists (Request $request){
+	/**
+	 * 站点列表
+	 */
+    function lists(Request $request)
+	{
         if($request->id){
             $cate = Category::where('cate_id', $request->id)->first();
             $collects = explode(",",$cate->cate_arrchildid);
@@ -55,9 +65,11 @@ class WebdirController extends Controller
         $data['site_nav'] = 'webdir';
         return view('front/webdir_lists',$data);
     }
-
-    //站点内容页
-    function Info(Request $request){
+	/**
+	 * 站点内容页
+	 */
+    function info(Request $request)
+	{
         $websites = website::leftJoin('users', 'users.id','=','websites.user_id')->where('websites.web_status','=','3')->where('websites.web_id','=',$request->id)->select('websites.*')->first();
         if($websites){
             $data['websites'] = $websites;
@@ -78,9 +90,11 @@ class WebdirController extends Controller
             return redirect('/');
         }
     }
-
-    //递归分类目录
-    function cates(){
+	/**
+	 * 递归分类目录
+	 */
+    function cates()
+	{
         $array = array();
         $cate = Category::where('cate_mod','webdir')->where('root_id','0')->orderBy('cate_id','asc')->select('cate_name','cate_img','cate_dir','cate_id','cate_arrchildid')->get();
         foreach($cate as $str){

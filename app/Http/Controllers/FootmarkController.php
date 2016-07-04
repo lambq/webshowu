@@ -10,8 +10,11 @@ use App\User, App\Article, App\Website, App\Page;
 
 class FootmarkController extends Controller
 {
-    //秀足迹详情页
-    function Info(Request $request){
+    /**
+	 * 秀足迹的内容
+	 */
+    function info(Request $request)
+	{
         if(!$request->id){
             return redirect('/');
         }
@@ -30,8 +33,11 @@ class FootmarkController extends Controller
             return redirect('/');
         }
     }
-
-    function lists($uid){
+	/**
+	 * 秀足迹内容列的数据
+	 */
+    function lists($uid)
+	{
         $lists = array();
         $Articles = Article::where(['user_id'=>$uid,'art_status'=>'3'])->orderBy('updated_at','desc')->get();
         foreach($Articles as $str){
@@ -57,8 +63,11 @@ class FootmarkController extends Controller
         $lists = $this->arraySort($lists,'updated_at','desc');
         return $lists;
     }
-
-    function arraySort($arr, $keys, $type = 'asc') {
+	/**
+	 * 二维数组排序
+	 */
+    function arraySort($arr, $keys, $type = 'asc')
+	{
         $keysvalue = $new_array = array();
         foreach ($arr as $k => $v){
             $keysvalue[$k] = $v[$keys];

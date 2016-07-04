@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Index(Request $request)
+    public function index(Request $request)
     {
         if($request->edit_id){
             $art_data['name'] = $request->name;
@@ -46,7 +46,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Get_Site(Request $request){
+    public function get_site(Request $request)
+	{
         $data['pagename'] = '我的站点';
         $data['site_title'] = '我的站点 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -63,7 +64,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Add_Site_Get(Request $request){
+    public function add_site_get(Request $request)
+	{
         $data['pagename'] = '添加新的站点';
         $data['site_title'] = '添加新的站点 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -79,7 +81,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Add_Site_Post(Request $request){
+    public function add_site_post(Request $request)
+	{
         $rules = [
         'web_url' => 'required|active_url',
         'web_name' => 'required',
@@ -141,7 +144,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Edit_Site_Get(Request $request){
+    public function edit_site_get(Request $request){
         $data['pagename'] = '站点编辑';
         $data['site_title'] = '站点编辑 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -161,7 +164,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Edit_Site_Post(Request $request){
+    public function edit_site_post(Request $request){
         $rules = [
         'web_url' => 'required|active_url',
         ];
@@ -224,7 +227,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Get_Art(Request $request){
+    public function get_art(Request $request){
         $data['pagename'] = '我的投稿';
         $data['site_title'] = '我的投稿 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -241,7 +244,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Add_Art_Get(Request $request){
+    public function add_art_get(Request $request){
         $data['pagename'] = '发布文章';
         $data['site_title'] = '发布文章 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -257,7 +260,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Add_Art_Post(Request $request){
+    public function add_art_post(Request $request){
         $rules = [
         'art_title' => 'required',
         'art_tags' => 'required',
@@ -318,7 +321,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Edit_Art_Get(Request $request){
+    public function edit_art_get(Request $request){
         $data['pagename'] = '编辑文章';
         $data['site_title'] = '编辑文章 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -337,7 +340,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Edit_Art_Post(Request $request){
+    public function edit_art_post(Request $request){
         $rules = [
           'art_title' => 'required',
           'art_tags' => 'required',
@@ -393,7 +396,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function get_category_option($cate_mod = 'webdir', $root_id = 0, $cate_id = 0, $level_id = 0) {
+    function get_category_option($cate_mod = 'webdir', $root_id = 0, $cate_id = 0, $level_id = 0)
+	{
         if (!in_array($cate_mod, array('webdir', 'article'))) $cate_mod = 'webdir';
         $results = Category::where('root_id', $root_id )->where('cate_mod', $cate_mod )->orderBy('cate_order','asc')->orderBy('cate_id','asc')->get();
         $optstr = '';

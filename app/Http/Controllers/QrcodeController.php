@@ -10,19 +10,27 @@ use App\Category, App\Page, App\Article, App\Website, App\Qrcode;
 
 class QrcodeController extends Controller
 {
-    //推荐资讯
+	/**
+	 * 推荐资讯
+	 */
     public $art_list;
-    //推荐站点
+	/**
+	 * 推荐站点
+	 */
     public $site_list;
-
-    public function __construct(){
+	/**
+	 * 初始化数据
+	 */
+    public function __construct()
+	{
       $this->art_list = Article::where(['art_status'=>'3'])->orderBy('art_views','desc')->take('10')->get();
-      //$this->art_list = Articles::where(['art_isbest'=>'1','art_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
       $this->site_list = Website::where(['web_isbest'=>'1','web_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
     }
-
-    //二维码首页
-    function Index(Request $request){
+	/**
+	 * 二维码首页
+	 */
+    function index(Request $request)
+	{
         $data['cates'] = $this->cates();
         $data['site_title'] = '秀二维码_微信群_微信群大全';
         $data['site_keywords'] = '秀二维码,微信群,微信群大全,微信群二维码';
@@ -31,8 +39,11 @@ class QrcodeController extends Controller
         $data['site_nav'] = 'qrcode';
         return view('front/qrcode_index',$data);
     }
-
-    function Lists(Request $request){
+	/**
+	 * 二维码列表
+	 */
+    function lists(Request $request)
+	{
         if(!is_numeric($request->id)){
             $cate = Category::where('cate_dir', $request->id)->first();
             $collects = explode(",",$cate->cate_arrchildid);
@@ -54,46 +65,54 @@ class QrcodeController extends Controller
         $data['site_nav'] = 'qrcode';
         return view('front/qrcode_lists',$data);
     }
-    
-    function Info(Request $request){
-      $qrcode = Qrcode::where('qr_id',$request->id)->where('qr_status','3')->first();
-      if($qrcode){
-          $data['site_title'] = $qrcode->qr_name.' - 秀站分类目录分享网站价值';
-          $data['site_keywords'] = $qrcode->qr_name.','.$qrcode->qr_tags;
-          $data['site_description'] = $qrcode->qr_name.','.$qrcode->qr_intro;
-          $data['site_nav'] = 'qrcode';
-          $data['qrcode'] = $qrcode;
-          $data['art_list'] = $this->art_list;
-          $data['site_list'] = $this->site_list;
-          $data['prev'] = $this->getPrevArticleId($request->id,$qrcode->cate_id);
-          $data['next'] = $this->getNextArticleId($request->id,$qrcode->cate_id);
-          $data['pages'] = Page::get();
-          Qrcode::where('qr_id', $request->id )->update(array('qr_views'=> $qrcode->qr_views+1 ));
-          return view('front/qrcode_info',$data);
-      }else{
-          return redirect('/');
-      }
+    /**
+	 * 二维码内容
+	 */
+    function info(Request $request)
+	{
+		$qrcode = Qrcode::where('qr_id',$request->id)->where('qr_status','3')->first();
+		if($qrcode){
+			$data['site_title'] = $qrcode->qr_name.' - 秀站分类目录分享网站价值';
+			$data['site_keywords'] = $qrcode->qr_name.','.$qrcode->qr_tags;
+			$data['site_description'] = $qrcode->qr_name.','.$qrcode->qr_intro;
+			$data['site_nav'] = 'qrcode';
+			$data['qrcode'] = $qrcode;
+			$data['art_list'] = $this->art_list;
+			$data['site_list'] = $this->site_list;
+			$data['prev'] = $this->getPrevArticleId($request->id,$qrcode->cate_id);
+			$data['next'] = $this->getNextArticleId($request->id,$qrcode->cate_id);
+			$data['pages'] = Page::get();
+			Qrcode::where('qr_id', $request->id )->update(array('qr_views'=> $qrcode->qr_views+1 ));
+		return view('front/qrcode_info',$data);
+		}else{
+			return redirect('/');
+		}
     }
-
-    //递归分类目录
-    protected function cates(){
-      $array = array();
-      $cate = Category::where('cate_mod','qrcode')->orderBy('cate_id','desc')->select('cate_name','cate_dir','cate_id','cate_arrchildid')->get();
-      foreach($cate as $str){
-          $cate_data = $str;
-          $collects = explode(",",$str->cate_arrchildid);
-          $cate_data['site_array'] = Qrcode::where('qr_status','3')->orderBy('qr_id','desc')->whereIn('cate_id',$collects)->take('6')->get();
-          $array[] = $cate_data;
-      }
-      return $array;
+	/**
+	 * 递归分类目录
+	 */
+    function cates()
+	{
+		$array = array();
+		$cate = Category::where('cate_mod','qrcode')->orderBy('cate_id','desc')->select('cate_name','cate_dir','cate_id','cate_arrchildid')->get();
+		foreach($cate as $str){
+			$cate_data = $str;
+			$collects = explode(",",$str->cate_arrchildid);
+			$cate_data['site_array'] = Qrcode::where('qr_status','3')->orderBy('qr_id','desc')->whereIn('cate_id',$collects)->take('6')->get();
+			$array[] = $cate_data;
+		}
+		return $array;
     }
-
-    //上一个
+	/**
+	 * 上一个
+	 */
     protected function getPrevArticleId($id,$cate_id){
         $aid = Qrcode::where('qr_id', '<', $id)->where('qr_status','=','3')->where('cate_id',$cate_id)->max('qr_id');
         return Qrcode::where('qr_id','=',$aid)->first();
     }
-    //下一个
+	/**
+	 * 下一个
+	 */
     protected function getNextArticleId($id,$cate_id){
         $aid = Qrcode::where('qr_id', '>', $id)->where('qr_status','=','3')->where('cate_id',$cate_id)->min('qr_id');
         return Qrcode::where('qr_id','=',$aid)->first();

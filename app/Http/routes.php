@@ -13,25 +13,24 @@
 
 //目录网站
 Route::group(['as' => 'front::'], function () {
-    Route::get('/', 'IndexController@Index');
+    Route::get('/', 'IndexController@index');
     Route::get('/ceshi', 'IndexController@ceshi');
     Route::get('/tags/{str}', 'IndexController@tags');
-    Route::get('/diypage-{id}.html','IndexController@Diypage');
-    //route::get('/sitemap.xml','IndexController@get_sitemap');
+    Route::get('/diypage-{id}.html','IndexController@diypage');
 
-    Route::get('/footmark-{id}.html','FootmarkController@Info');
+    Route::get('/footmark-{id}.html','FootmarkController@info');
 
-    Route::get('/webdir', 'WebdirController@Index');
-    Route::get('/webdir/{id}','WebdirController@Lists');
-    Route::get('/siteinfo-{id}.html','WebdirController@Info');
+    Route::get('/webdir', 'WebdirController@index');
+    Route::get('/webdir/{id}','WebdirController@lists');
+    Route::get('/siteinfo-{id}.html','WebdirController@info');
 
-    Route::get('/article', 'ArticleController@Index');
-    Route::get('/article/{id}','ArticleController@Lists');
-    Route::get('/artinfo-{id}.html','ArticleController@Info');
+    Route::get('/article', 'ArticleController@index');
+    Route::get('/article/{id}','ArticleController@lists');
+    Route::get('/artinfo-{id}.html','ArticleController@info');
 
-    Route::get('/qrcode', 'QrcodeController@Index');
-    Route::get('/qrcode/{id}','QrcodeController@Lists');
-    Route::get('/qrcode-{id}.html','QrcodeController@Info');
+    Route::get('/qrcode', 'QrcodeController@index');
+    Route::get('/qrcode/{id}','QrcodeController@lists');
+    Route::get('/qrcode-{id}.html','QrcodeController@info');
 });
 
 Route::auth();
@@ -42,19 +41,19 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['as' => 'home::'], function () {
-  Route::get('/home', 'HomeController@Index');
+  Route::get('/home', 'HomeController@index');
 
-  Route::get('/vendor', 'Homecontroller@Vendor');
+  Route::get('/vendor', 'Homecontroller@vendor');
 
-  Route::get('/get_site', 'HomeController@Get_Site');
-  Route::get('/add_site', 'HomeController@Add_Site_Get');
-  Route::post('/add_site', 'HomeController@Add_Site_Post');
-  Route::get('/edit_site/{id}', 'HomeController@Edit_Site_Get');
-  Route::post('/edit_site', 'HomeController@Edit_Site_Post');
+  Route::get('/get_site', 'HomeController@get_site');
+  Route::get('/add_site', 'HomeController@add_site_get');
+  Route::post('/add_site', 'HomeController@add_site_post');
+  Route::get('/edit_site/{id}', 'HomeController@edit_site_get');
+  Route::post('/edit_site', 'HomeController@edit_site_post');
 
-  Route::get('/get_art', 'HomeController@Get_Art');
-  Route::get('/add_art', 'HomeController@Add_Art_Get');
-  Route::post('/add_art', 'HomeController@Add_Art_Post');
-  Route::get('/edit_art/{id}', 'HomeController@Edit_Art_Get');
-  Route::post('/edit_art', 'HomeController@Edit_Art_Post');
+  Route::get('/get_art', 'HomeController@get_art');
+  Route::get('/add_art', 'HomeController@add_art_get');
+  Route::post('/add_art', 'HomeController@add_art_post');
+  Route::get('/edit_art/{id}', 'HomeController@edit_art_get');
+  Route::post('/edit_art', 'HomeController@edit_art_post');
 });

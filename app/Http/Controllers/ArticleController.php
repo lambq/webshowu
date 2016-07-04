@@ -10,18 +10,27 @@ use App\Category, App\Page, App\Article, App\Website;
 
 class ArticleController extends Controller
 {
-    //推荐资讯
+	/**
+	 * 推荐资讯
+	 */
     public $art_list;
-    //推荐站点
+	/**
+	 * 推荐站点
+	 */
     public $site_list;
-
-    public function __construct(){
-      $this->art_list = Article::where(['art_status'=>'3'])->orderBy('art_views','desc')->take('10')->get();
-      //$this->art_list = Articles::where(['art_isbest'=>'1','art_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
-      $this->site_list = Website::where(['web_isbest'=>'1','web_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
+	/**
+	 * 初始化数据
+	 */
+    public function __construct()
+	{
+		$this->art_list = Article::where(['art_status'=>'3'])->orderBy('art_views','desc')->take('10')->get();
+		$this->site_list = Website::where(['web_isbest'=>'1','web_status'=>'3'])->orderBy('updated_at','desc')->take('10')->get();
     }
-
-    function index(Request $request){
+	/**
+	 * 文章首页
+	 */
+    function index(Request $request)
+	{
         $data['cates'] = $this->cates();
         $data['site_title'] = '秀资讯--不一样的资讯网站';
         $data['site_keywords'] = '秀站长,秀seo,秀运营,秀技术,秀资讯,奇趣科技,不一样的网站';
@@ -30,8 +39,11 @@ class ArticleController extends Controller
         $data['site_nav'] = 'article';
         return view('front/article_index',$data);
     }
-
-    function lists(Request $request){
+	/**
+	 * 文章列表
+	 */
+    function lists(Request $request)
+	{
         if(!is_numeric($request->id)){
             $cate = Category::where('cate_dir', $request->id)->first();
             $collects = explode(",",$cate->cate_arrchildid);
@@ -53,8 +65,11 @@ class ArticleController extends Controller
         $data['site_nav'] = 'article';
         return view('front/article_lists',$data);
     }
-
-    function info(Request $request){
+	/**
+	 * 文章内容
+	 */
+    function info(Request $request)
+	{
         $articles = Article::where('art_id',$request->id)->where('art_status','3')->first();
         if($articles){
             $data['articles'] = $articles;
@@ -78,9 +93,11 @@ class ArticleController extends Controller
             return redirect('/');
         }
     }
-
-    //递归分类目录
-    protected function cates(){
+	/**
+	 * 递归分类目录
+	 */
+    function cates()
+	{
         $array = array();
         $cate = Category::where('cate_mod','article')->orderBy('cate_id','desc')->select('cate_name','cate_dir','cate_id','cate_arrchildid')->get();
         foreach($cate as $str){
@@ -91,12 +108,16 @@ class ArticleController extends Controller
         }
         return $array;
     }
-
+	/**
+	 * 上一个
+	 */
     protected function getPrevArticleId($id,$cate_id){
         $aid = Article::where('art_id', '<', $id)->where('art_status','=','3')->where('cate_id',$cate_id)->max('art_id');
         return Article::where('articles.art_id','=',$aid)->first();
     }
-
+	/**
+	 * 下一个
+	 */
     protected function getNextArticleId($id,$cate_id){
         $aid = Article::where('art_id', '>', $id)->where('art_status','=','3')->where('cate_id',$cate_id)->min('art_id');
         return Article::where('articles.art_id','=',$aid)->first();

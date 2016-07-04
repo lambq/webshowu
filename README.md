@@ -22,10 +22,12 @@
 * 文章采集组合：建立一个采集规则表、调用cron任务调度定时每一分钟读取规则表里面的所以规则、循环抛给处理规则的队列(jobs)、然后把所有要采集的文章(标题和链接)抛给文章采集队列(jobs)。
 
 ## 使用了laravel扩展包？
-* jenssegers/agent——轻松识别客户端信息
-* stevenyangecho/laravel-u-editor——百度编辑器
-* overtrue/laravel-lang——laravel多个国家的语言包
-* predis/predis——最好的redis-php扩展包
+* "overtrue/laravel-lang": "~3.0" 多个国家的语言包
+* "predis/predis": "~1.0" 最好的redis-php扩展包
+* "guzzlehttp/guzzle": "~5.3|~6.0" PHP的HTTP客户端，用来轻而易举地发送请求，并集成到我们的WEB服务上
+* "overtrue/laravel-socialite": "~1.0" 社会化登陆
+* "stevenyangecho/laravel-u-editor": "~1.3" 百度开源项目我富文本编辑器
+* "zgldh/qiniu-laravel-storage": "^0.4.2" 七牛云存储SDK
 
 ## 使用了laravel哪些服务？
 * artisan工具(Artisan Console)
@@ -59,7 +61,7 @@
 * [laravel](http://www.leravel.com)
 * [秀站分类目录](http://www.webshowu.com)
 * [laravel学院](http://laravelacademy.org)
-
+* [amazeui](http://amazeui.org)
 ## 有bug反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
