@@ -54,6 +54,7 @@
 * linux的定时任务系统“只能精确的分钟”(cron/crontab)
 
 ## 感激
+
 感谢以下的项目,排名不分先后
 
 * [phphub](https://phphub.org)
@@ -62,6 +63,7 @@
 * [秀站分类目录](http://www.webshowu.com)
 * [laravel学院](http://laravelacademy.org)
 * [amazeui](http://amazeui.org)
+
 ## 有bug反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 

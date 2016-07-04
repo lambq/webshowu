@@ -16,8 +16,6 @@
         <!-- <a href="{{ url('/oauth/qq') }}" class="am-btn am-btn-success am-btn-sm"><i class="am-icon-qq am-icon-sm"></i> QQ</a> -->
       </div>
       <br>
-      <br>
-      
       <form role="form" method="POST" action="{{ url('/login') }}" class="am-form">
         {{ csrf_field() }}
         <label for="email">邮箱:</label>
@@ -43,6 +41,8 @@
         </div>
       </form>
       <hr>
+	  <a href="{{ url('/register') }}" class="am-btn am-btn-primary am-btn-sm am-fl">注册</a>
+	  <br>
       <p>© 2014 Allwebshowu, Inc. Licensed under MIT license.</p>
     </div>
   </div>

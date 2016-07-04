@@ -101,7 +101,7 @@ class HomeController extends Controller
             return Redirect::back()->withErrors($validator);
         }
 
-        $cate = Categories::where('cate_id', $request->cate_id)->first();
+        $cate = Category::where('cate_id', $request->cate_id)->first();
         if ($cate['cate_childcount'] > 0) {
             return redirect::back()->withErrors('指定的分类下有子分类，请选择子分类进行操作！');
         }
@@ -117,13 +117,13 @@ class HomeController extends Controller
             }
         }
 
-        $weburl = Websites::where('web_url', $request->web_url)->first();
+        $weburl = Website::where('web_url', $request->web_url)->first();
         if($weburl) {
         return redirect::back()->withErrors('您所提交的网站已存在！');
         }
 
         $web_ip = sprintf("%u", ip2long($request->getClientIp()));
-        $data = new Websites;
+        $data = new Website;
         $data->cate_id = $request->cate_id;
         $data->user_id = $request->user()->id;
         $data->web_name = $request->web_name;
