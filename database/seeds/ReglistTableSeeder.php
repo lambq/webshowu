@@ -12,7 +12,7 @@ class ReglistTableSeeder extends Seeder
     public function run()
     {
         //网站采集规则数据填充
-        $dir_reg_list = DB::connection('webshowu')->select('select * from Reg_List');
+        $dir_reg_list = DB::connection('webshowu')->select('select * from reglists');
         foreach($dir_reg_list as $str){
           DB::table('reglists')->insert([
           'reg_id' => $str->reg_id ,

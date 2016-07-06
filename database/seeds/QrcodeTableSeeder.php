@@ -12,7 +12,7 @@ class QrcodeTableSeeder extends Seeder
     public function run()
     {
         //网站二维码数据填充
-        $dir_qrcode = DB::connection('webshowu')->select('select * from qrcode');
+        $dir_qrcode = DB::connection('webshowu')->select('select * from qrcodes');
         foreach($dir_qrcode as $str){
           DB::table('qrcodes')->insert([
               'qr_id' => $str->qr_id ,
