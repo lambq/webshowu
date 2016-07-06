@@ -49,8 +49,8 @@
 
 ## 安装步骤
 * 第一步骤 根目录下面的.env.example 文件复制一份 重新命名为 .env文件 这个文件就是配置文件！把里面的数据库等信息配置好了
-* 第二步骤 根目录下面的 <code>storage<code> 文件夹下面所有文件权限设置成777 
-* 第三步骤 命令行执行 <code>php artisan migrate<code> 生成sql表结构
+* 第二步骤 根目录下面的 <code>storage</code> 文件夹下面所有文件权限设置成777 
+* 第三步骤 命令行执行 <code>php artisan migrate</code> 生成sql表结构
 * 完成了安装 以上都必须安装好 laravel 开发环境 才可以执行上面的步骤
 
 ## 感激
