@@ -45,7 +45,7 @@ class WebdirController extends Controller
     function lists(Request $request)
 	{
         if($request->id){
-            $cate = Category::where('cate_id', $request->id)->first();
+            $cate = Category::where('cate_id', $request->id)->select('cate_arrchildid','cate_name','cate_keywords','cate_description')->first();
             $collects = explode(",",$cate->cate_arrchildid);
             $websites = Website::where('web_status','3')->whereIn('cate_id',$collects)->orderBy('web_id','desc')->paginate(12);
             $data['websites'] = $websites;

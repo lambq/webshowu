@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="am-text-middle">服务器IP：</td>
-            <td>{{$websites->web_ip}}</td>
+            <td>{{ long2ip($websites->web_ip) }}</td>
           </tr>
           <tr>
             <td class="am-text-middle">人气：</td>

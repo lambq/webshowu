@@ -77,8 +77,7 @@
   <p class="am-text-center">
     <a href="http://www.webshowu.com/">秀站分类目录</a>&nbsp;&nbsp;
     北京儒尚科技有限公司【<a rel="nofollow" href="http://www.miibeian.gov.cn">京ICP备14053701号-4</a>】&nbsp;&nbsp;
-    QQ群：57176386&nbsp;&nbsp;
-    快审qq：897284312&nbsp;&nbsp;
+    QQ群：55725231&nbsp;&nbsp;
     <script src="http://s95.cnzz.com/z_stat.php?id=1257630163&web_id=1257630163" language="JavaScript"></script>
   </p>
 </footer>

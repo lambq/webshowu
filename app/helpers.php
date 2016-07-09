@@ -108,7 +108,7 @@ function isMobile(){
 }
 /** 百度站长链接推送 **/
 function zhanzhang_push_baidu($url){
-  $urls = array($url);
+  $urls = [$url];
   $api = 'http://data.zz.baidu.com/urls?site=www.webshowu.com&token=6ujhg0alnRLbwZr7';
   $ch = curl_init();
   $options =  array(

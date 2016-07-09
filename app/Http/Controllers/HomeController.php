@@ -9,7 +9,6 @@ use App\User, App\Article, App\Website, App\Category, Validator, Redirect;
 
 class HomeController extends Controller
 {
-    public $users;
     /**
      * Create a new controller instance.
      *
@@ -29,7 +28,7 @@ class HomeController extends Controller
         if($request->edit_id){
             $art_data['name'] = $request->name;
             $art_data['user_qq'] = $request->user_qq;
-            User::where('user_id', $this->users->user_id)->update($art_data);
+            User::where('user_id', $request->user()->id )->update($art_data);
             return redirect::to('profile')->with('success','个人资料修改成功！');
         }
         $data['pagename'] = '个人信息 - 会员中心';
@@ -47,7 +46,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function get_site(Request $request)
-	{
+	  {
         $data['pagename'] = '我的站点';
         $data['site_title'] = '我的站点 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -65,7 +64,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function add_site_get(Request $request)
-	{
+	  {
         $data['pagename'] = '添加新的站点';
         $data['site_title'] = '添加新的站点 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -82,7 +81,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function add_site_post(Request $request)
-	{
+	  {
         $rules = [
         'web_url' => 'required|active_url',
         'web_name' => 'required',
@@ -144,7 +143,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit_site_get(Request $request){
+    public function edit_site_get(Request $request)
+		{
         $data['pagename'] = '站点编辑';
         $data['site_title'] = '站点编辑 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -152,7 +152,7 @@ class HomeController extends Controller
         $data['site_nav'] = 'Website';
 
 
-        $web = Website::where('web_id', $request->id )->first();
+        $web = Website::where('web_id', $request->id )->where('user_id', $request->user()->id)->first();
         $data['category_option'] = $this->get_category_option('webdir', 0, $web->cate_id , 0);
         $data['myself'] = $request->user();
         $data['edit_id'] = $request->id;
@@ -164,7 +164,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit_site_post(Request $request){
+    public function edit_site_post(Request $request)
+		{
         $rules = [
         'web_url' => 'required|active_url',
         ];
@@ -208,7 +209,6 @@ class HomeController extends Controller
         $web_ip = sprintf("%u", ip2long($request->getClientIp()));
 
         $web_site['cate_id'] = $request->cate_id;
-        $web_site['user_id'] = $request->user()->id;
         $web_site['web_name'] = $request->web_name;
         $web_site['web_url'] = $request->web_url;
         $web_site['web_tags'] = $request->web_tags;
@@ -219,7 +219,7 @@ class HomeController extends Controller
         $web_site['web_srank'] = $request->web_srank;
         $web_site['web_arank'] = $request->web_arank;
         $web_site['web_status'] = '2';
-        Website::where('web_id', $request->edit_id)->update($web_site);
+        Website::where('web_id', $request->edit_id)->where('user_id', $request->user()->id)->update($web_site);
         return redirect('/get_site');
     }
     /**
@@ -227,7 +227,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function get_art(Request $request){
+    public function get_art(Request $request)
+		{
         $data['pagename'] = '我的投稿';
         $data['site_title'] = '我的投稿 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -244,7 +245,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add_art_get(Request $request){
+    public function add_art_get(Request $request)
+		{
         $data['pagename'] = '发布文章';
         $data['site_title'] = '发布文章 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
@@ -260,7 +262,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add_art_post(Request $request){
+    public function add_art_post(Request $request)
+		{
         $rules = [
         'art_title' => 'required',
         'art_tags' => 'required',
@@ -321,14 +324,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit_art_get(Request $request){
+    public function edit_art_get(Request $request)
+		{
         $data['pagename'] = '编辑文章';
         $data['site_title'] = '编辑文章 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '';
         $data['site_description'] = '';
         $data['site_nav'] = 'Article';
 
-        $row = Article::where('art_id', $request->id)->first();
+        $row = Article::where('art_id', $request->id)->where('user_id', $request->user()->id)->first();
         $data['category_option'] = $this->get_category_option('article', 0, $row->cate_id, 0);
         $data['myself'] = $request->user();
         $data['edit_id'] = $request->id;
@@ -340,7 +344,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit_art_post(Request $request){
+    public function edit_art_post(Request $request)
+		{
         $rules = [
           'art_title' => 'required',
           'art_tags' => 'required',
@@ -378,7 +383,6 @@ class HomeController extends Controller
 
         if (empty($request->copy_url)) $request->copy_url = 'http://www.webshowu.com';
 
-        $art_data['user_id'] = $request->user()->id ;
         $art_data['cate_id'] = $request->cate_id;
         $art_data['art_title'] = $request->art_title;
         $art_data['art_tags'] = $request->art_tags;
@@ -388,7 +392,7 @@ class HomeController extends Controller
         $art_data['art_content'] = $request->art_content;
         $art_data['art_status'] = '2';
 
-        Article::where('art_id', $request->edit_id)->update($art_data);
+        Article::where('art_id', $request->edit_id)->where('user_id', $request->user()->id)->update($art_data);
         return redirect('/get_art');
     }
     /**
@@ -397,7 +401,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     function get_category_option($cate_mod = 'webdir', $root_id = 0, $cate_id = 0, $level_id = 0)
-	{
+		{
         if (!in_array($cate_mod, array('webdir', 'article'))) $cate_mod = 'webdir';
         $results = Category::where('root_id', $root_id )->where('cate_mod', $cate_mod )->orderBy('cate_order','asc')->orderBy('cate_id','asc')->get();
         $optstr = '';

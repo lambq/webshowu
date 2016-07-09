@@ -91,12 +91,23 @@ class AuthController extends Controller
         
         if($service == 'github'){
             if(!$userinfo = User::where('email', $user->email )->first()){
-                $userModel = new User;
-                $userModel->github_id = $user->id;
-                $userModel->email = $user->email;
-                $userModel->name = $user->name;
-                $userModel->avatar = $user->avatar_url;
-                $userModel->save();
+								if(!$userinfo = User::where('github_id', $user->id )->first()){
+									$userModel = new User;
+									$userModel->github_id = $user->id;
+									$userModel->email = $user->email;
+									$userModel->name = $user->name;
+									$userModel->avatar = $user->avatar_url;
+									$userModel->save();
+								}else{
+									$userData['github_id'] = $user->id;
+									if($userinfo->avatar != ''){
+										$userData['avatar'] = $user->avatar_url;
+									}
+									if($userinfo->name != ''){
+										$userData['name'] = $user->name;
+									}
+									User::where('github_id', $user->id )->update($userData);
+								}
             }else{
                 $userData['github_id'] = $user->id;
                 if($userinfo->avatar != ''){
