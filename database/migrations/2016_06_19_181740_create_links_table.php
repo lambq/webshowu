@@ -15,11 +15,11 @@ class CreateLinksTable extends Migration
         //友情链接
         Schema::create('links', function (Blueprint $table) {
             $table->increments('link_id');
-            $table->string('link_name','50');
-            $table->string('link_url','255');
-            $table->string('link_logo','255');
-            $table->tinyInteger('link_hide')->unsigned();
-            $table->tinyInteger('link_order')->unsigned();
+            $table->string('link_name','50')->comment('链接名称');
+            $table->string('link_url','255')->comment('链接地址');
+            $table->string('link_logo','255')->comment('链接LOGO');
+            $table->tinyInteger('link_hide')->unsigned()->comment('链接是否开启');
+            $table->tinyInteger('link_order')->unsigned()->comment('链接排序');
             $table->timestamps();
         });
     }

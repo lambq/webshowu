@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminTableSeeder' => $baseDir . '/database/seeds/AdminTableSeeder.php',
     'ArticleTableSeeder' => $baseDir . '/database/seeds/ArticleTableSeeder.php',
     'Callback' => $baseDir . '/app/libs/phpQuery/phpQuery/Callback.php',
     'CallbackBody' => $baseDir . '/app/libs/phpQuery/phpQuery/Callback.php',

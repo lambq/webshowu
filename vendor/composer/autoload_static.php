@@ -337,6 +337,7 @@ class ComposerStaticInit0de74c43a421bea1b7757b7c80aa2613
     );
 
     public static $classMap = array (
+        'AdminTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminTableSeeder.php',
         'ArticleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticleTableSeeder.php',
         'Callback' => __DIR__ . '/../..' . '/app/libs/phpQuery/phpQuery/Callback.php',
         'CallbackBody' => __DIR__ . '/../..' . '/app/libs/phpQuery/phpQuery/Callback.php',
