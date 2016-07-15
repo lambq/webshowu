@@ -57,7 +57,7 @@
 
           <div class="am-form-group">
             <label for="doc-web_ip">服务器IP</label>
-            <input type="text" name="web_ip" id="doc-web_ip" placeholder="请输入网站域名" value="{{$web->web_ip}}">
+            <input type="text" name="web_ip" id="doc-web_ip" placeholder="请输入网站域名" value="{{ long2ip($web->web_ip) }}">
           </div>
 
           <div class="am-form-group">

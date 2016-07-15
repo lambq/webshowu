@@ -23,7 +23,7 @@ class ArticleTableSeeder extends Seeder
             'copy_from' => $str->copy_from,
             'copy_url' => $str->copy_url,
             'art_intro' => $str->art_intro,
-            'art_content' => str_replace('http://img.webshowu.com/http://img.webshowu.com/','http://img.webshowu.com/',$str->art_content),
+            'art_content' => $str->art_content,
             'art_views' => $str->art_views,
             'art_ispay' => $str->art_ispay,
             'art_istop' => $str->art_istop,

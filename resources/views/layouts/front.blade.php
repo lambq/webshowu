@@ -80,6 +80,12 @@
     QQ群：55725231&nbsp;&nbsp;
     <script src="http://s95.cnzz.com/z_stat.php?id=1257630163&web_id=1257630163" language="JavaScript"></script>
   </p>
+	<p class="am-text-center">
+		源代码下载
+	</p>
+	<p class="am-text-center">
+		<a target="_blank" href="https://github.com/lambq/webshowu" title="github项目源代码" class="am-icon-btn am-secondary am-icon-git-square"></a>
+	</p>
 </footer>
 
 

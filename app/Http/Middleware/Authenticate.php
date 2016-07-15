@@ -21,11 +21,11 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-				if($guard){
-					return redirect()->guest($guard.'/login');
-				}else{
-					return redirect()->guest('login');
-				}
+								if($guard){
+									return redirect()->guest($guard.'/login');
+								}else{
+									return redirect()->guest('login');
+								}
             }
         }
 

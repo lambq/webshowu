@@ -60,7 +60,7 @@ function get_url_content($url, $proxy = false) {
 /** 获取文章第一张图片 **/
 function get_pic($content,$order='ALL'){
   $array = '';
-  $pattern="/<img.*?src=[\'|\"](.*?(?:[\.gif|\.jpg]))[\'|\"].*?[\/]?>/";
+  $pattern="/<img.*?data-original=[\'|\"](.*?(?:[\.gif|\.jpg]))[\'|\"].*?[\/]?>/";
   preg_match_all($pattern,$content,$match);
   if(isset($match[1])&&!empty($match[1])){
     if($order==='ALL'){

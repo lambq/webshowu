@@ -18,6 +18,7 @@ return array(
     'CreateAdminsTable' => $baseDir . '/database/migrations/2016_07_06_173908_create_admins_table.php',
     'CreateArticlesTable' => $baseDir . '/database/migrations/2016_06_19_181518_create_articles_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_06_19_181648_create_categories_table.php',
+    'CreateFailedJobsTable' => $baseDir . '/database/migrations/2016_07_13_022204_create_failed_jobs_table.php',
     'CreateLablesTable' => $baseDir . '/database/migrations/2016_06_19_181712_create_lables_table.php',
     'CreateLinksTable' => $baseDir . '/database/migrations/2016_06_19_181740_create_links_table.php',
     'CreatePagesTable' => $baseDir . '/database/migrations/2016_06_19_181759_create_pages_table.php',

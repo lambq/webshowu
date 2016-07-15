@@ -25,9 +25,9 @@ return [
 
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu'=>[
-            'accessKey'=>'XWZPCqQz_-ehLwqEX3zoNAW8kaCVP5Hsqoi-Rjfx',
-            'secretKey'=>'wh1cSO1NHPZZPY8WlyhqotH7RE0ys_eSjT5dMkpA',
-            'bucket'=>'',
+            'accessKey'=> env('QINIU_AK'),
+            'secretKey'=> env('QINIU_SK'),
+            'bucket'=> env('QINIU_BK'),
             'url'=>'http://'.env('QINIU_custom'),//七牛分配的CDN域名,注意带上http://
 
         ]

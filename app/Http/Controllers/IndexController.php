@@ -8,15 +8,15 @@ use App\Http\Requests;
 
 use App\Article, App\Website, App\Link, App\Lable, App\Category, App\Page;
 
-use GuzzleHttp\Client;
-
 class IndexController extends Controller
 {
-	/**
-	 * 首页
-	 */
+		/**
+     * 首页
+     *
+     * @return void
+     */
     public function index(Request $request)
-	{
+		{
         $data['site_title'] = '秀站分类目录|中文分类目录|网站分类目录|免费网站目录|dmoz目录-北京儒尚科技有限公司';
         $data['site_keywords'] = 'DMOZ目录,DMOZ分类目录,网站收录,网站目录,网站登录,中文网站目录,秀站分类目录,分类目录,秀站分类目录分享网站价值,秀站,秀站目录,免费网站目录';
         $data['site_description'] = '秀站分类目录免费收录各类优秀中文网站，提供网站分类目录检索，关键字搜索，提供网站即可免费快速提升网站流量，分享网站价值也是中国dmoz的标志';
@@ -35,23 +35,13 @@ class IndexController extends Controller
         }
         return view('front/index',$data);
     }
-	/**
-	 * 测试功能
-	 */
-    public function ceshi(Request $request)
-	{
-		$die = range(1, 9, 2);
-		print_r($die);
-		echo '<br/>';
-		foreach (range(1, 9, 2) as $number) {
-			echo $number.'<br/>';
-		}
-    }
-	/**
-	 * 标签
-	 */
+		/**
+     * 标签
+     *
+     * @return void
+     */
     public function tags(Request $request)
-	{
+		{
         return redirect('/');
         /*
         $lables = Lables::where('lab_name',$request->str )->first();
@@ -69,11 +59,13 @@ class IndexController extends Controller
         }
         */
     }
-	/**
-	 * 帮助中心
-	 */
+		/**
+     * 帮助中心
+     *
+     * @return void
+     */
     public function diypage(Request $request)
-	{
+		{
         $data['page_first'] = page::where('page_id',$request->id)->first();
         if($data['page_first']){
             $data['site_title'] = $data['page_first']->page_name.'-秀站分类目录分享网站价值';
@@ -86,11 +78,13 @@ class IndexController extends Controller
             return redirect('/');
         }
     }
-	/**
-	 * 递归分类目录
-	 */
+		/**
+     * 递归分类目录
+     *
+     * @return void
+     */
     public function cates()
-	{
+		{
       $array = array();
       $cate = Category::where(['cate_isbest'=>'1'])->orderBy('cate_order','asc')->orderBy('cate_id','asc')->get();
       foreach($cate as $str){
@@ -102,11 +96,13 @@ class IndexController extends Controller
       }
       return $array;
     }
-	/**
-	 * 基于反向链接
-	 */
+		/**
+     * 基于反向链接
+     *
+     * @return void
+     */
     public function xiumeiProxy($request)
-	{
+		{
         if($request->server('HTTP_REFERER') && !str_contains($request->server('HTTP_REFERER'),'webshowu')){
             $app_url = $this->xiumeiParseUrl($request->server('HTTP_REFERER'));
             $array = Website::where('web_url','like','%'.$app_url.'%')->first();
@@ -136,7 +132,7 @@ class IndexController extends Controller
         return false;
     }
     public function xiumeiAdd($url)
-	{
+		{
         $data = new Website;
         $data->cate_id = '10000';
         $data->user_id = '10000';
@@ -148,7 +144,7 @@ class IndexController extends Controller
         $data->save();
     }
     public function xiumeiParseUrl($url,$type=0)
-	{
+		{
         if($type == 0){
             $array = parse_url($url);
             return $array['host'];

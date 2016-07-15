@@ -22,12 +22,14 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-	/**
+
+		/**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
     protected $redirectTo = '/admin'; // 登录成功后跳转地址
+
 		protected $guard = 'admin';
     protected $loginView = 'admin.login';
     protected $registerView = 'admin.register';
@@ -39,7 +41,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware( 'guest:admin', ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 	/**
      * Get a validator for an incoming registration request.
