@@ -6,7 +6,6 @@ use App\Jobs\Job;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Http\Libraries\BearyChatRobot; //机器人通知
 
 use Storage;
 

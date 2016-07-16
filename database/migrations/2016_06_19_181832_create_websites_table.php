@@ -36,7 +36,7 @@ class CreateWebsitesTable extends Migration
             $table->integer('web_views')->unsigned()->comment('浏览次数');
             $table->tinyInteger('web_status')->unsigned()->comment('审核状态 1=黑名单 2=待审核 3=已审核');
             $table->timestamps();
-						$table->softDeletes();
+            $table->softDeletes();
         });
     }
 

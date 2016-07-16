@@ -48,10 +48,7 @@
 * linux的定时任务系统“只能精确的分钟”(cron/crontab)
 
 ## 安装步骤
-* 第一步骤 根目录下面的.env.example 文件复制一份 重新命名为 .env文件 这个文件就是配置文件！把里面的数据库等信息配置好了
-* 第二步骤 根目录下面的 <code>storage</code> 文件夹下面所有文件权限设置成777 
-* 第三步骤 命令行执行 <code>php artisan migrate</code> 生成sql表结构
-* 完成了安装 以上都必须安装好 laravel 开发环境 才可以执行上面的步骤
+[点击链接](https://github.com/lambq/webshowu/wiki/%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE)
 
 ## 感激
 

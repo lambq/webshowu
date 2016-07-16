@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Libraries\BearyChatRobot; //机器人通知
+
 use App\Website, App\Link, App\Category, App\Admin, App\User;
 use Auth, Mail, Validator, Redirect, Carbon\Carbon, Storage, Hash;
 

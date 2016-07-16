@@ -30,7 +30,7 @@ class CreateArticlesTable extends Migration
             $table->tinyInteger('art_isbest')->unsigned()->comment('文章是否');
             $table->tinyInteger('art_status')->unsigned()->comment('文章审核状态');
             $table->timestamps();
-						$table->softDeletes();
+            $table->softDeletes();
         });
     }
 

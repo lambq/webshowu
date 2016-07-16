@@ -8,8 +8,6 @@ use App\Http\Requests;
 
 use App\Reglist, DB, phpQuery;
 
-use App\Http\Libraries\BearyChatRobot; //机器人通知
-
 class CeshiController extends Controller
 {
 		/**

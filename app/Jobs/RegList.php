@@ -6,7 +6,6 @@ use App\Jobs\Job;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Http\Libraries\BearyChatRobot; //机器人通知
 
 use App\Jobs\Article, DB, phpQuery;
 
@@ -67,7 +66,7 @@ class RegList extends Job implements ShouldQueue
 						};
 						if($this->row->reg_content == json_encode($data())){
 								//程序输出到机器人中！出现错误了！然后自己报警
-								BearyChatRobot::notify('队列——采集器', $this->row->reg_url.'这个链接地址没有数据更新！');
+								//BearyChatRobot::notify('队列——采集器', $this->row->reg_url.'这个链接地址没有数据更新！');
             }else{
                 $result = $this->ArtCaiji_array_diff($data(),json_decode($this->row->reg_content,true));
                 if($result){
@@ -81,7 +80,7 @@ class RegList extends Job implements ShouldQueue
             }
 				}else{
 						//程序输出到机器人中！出现错误了！然后自己报警
-						BearyChatRobot::notify('队列——采集器', '这个网址已经失去效果='.$this->row->reg_url);
+						//BearyChatRobot::notify('队列——采集器', '这个网址已经失去效果='.$this->row->reg_url);
 				}
     }
 		/**
@@ -109,7 +108,7 @@ class RegList extends Job implements ShouldQueue
 		function ArtCaiji_queue($array,$cate_id,$type){
 				if($array){
 						foreach ($array as $value) {
-								BearyChatRobot::notify('队列——采集器', $type.'的文章已经提交给队列了针对');
+								//BearyChatRobot::notify('队列——采集器', $type.'的文章已经提交给队列了针对');
 								dispatch(new Article($value,$cate_id,$type));
 						}
 						return true;

@@ -6,7 +6,6 @@ use App\Jobs\Job;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Http\Libraries\BearyChatRobot; //机器人通知
 
 use App\Jobs\QiniuImg, DB, phpQuery;
 
@@ -59,7 +58,7 @@ class Article extends Job implements ShouldQueue
 							if($this->type == '5118'){
 									$articles = DB::table('articles')->where('art_title', $row['title'])->first();
 									if($articles){
-											BearyChatRobot::notify('队列——文章采集', '文章已经存在标题='.$row['title'].'|||链接地址='.$row['href']);
+											//BearyChatRobot::notify('队列——文章采集', '文章已经存在标题='.$row['title'].'|||链接地址='.$row['href']);
 									}
 
 									$metas = array();
@@ -166,10 +165,10 @@ class Article extends Job implements ShouldQueue
 							}
 							*/
           }else{
-							BearyChatRobot::notify('队列——文章采集', '文章内容获取到标题='.$row['title'].'|||链接地址='.$row['href']);
+							//BearyChatRobot::notify('队列——文章采集', '文章内容获取到标题='.$row['title'].'|||链接地址='.$row['href']);
           }
         }else{
-						BearyChatRobot::notify('队列——文章采集', '没有接收到文章数据');
+						//BearyChatRobot::notify('队列——文章采集', '没有接收到文章数据');
         }
     }
 		/**

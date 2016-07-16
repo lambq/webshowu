@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Http\Libraries\BearyChatRobot; //机器人通知
 
 use App\Jobs\RegList, DB; //这里 调用了队列RegList 采集规则 处理程序 调用了2个类库！DB是数据库类库、log是日志类库
 
@@ -41,7 +40,7 @@ class caiji extends Command
     public function handle()
     {
         //
-				$reg_list = DB::table('reglists')->where('reg_status','3')->get(); //读取采集规则表里面所以规则
+        $reg_list = DB::table('reglists')->where('reg_status','3')->get(); //读取采集规则表里面所以规则
         foreach($reg_list as $str){
             dispatch(new RegList($str)); //然后遍历把它 推送给 RegList 采集规则队列
         }
