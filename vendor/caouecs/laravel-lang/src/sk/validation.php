@@ -38,6 +38,7 @@ return [
     'distinct'             => ':attribute je duplicitný.',
     'email'                => ':attribute má neplatný formát.',
     'exists'               => 'označený :attribute je neplatný.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute je požadované.',
     'image'                => ':attribute musí byť obrázok.',
     'in'                   => 'označený :attribute je neplatný.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute nemôže mať viac ako :max prvkov.',
     ],
     'mimes'                => ':attribute musí byť súbor s koncovkou: :values.',
+    'mimetypes'            => ':attribute musí byť súbor s koncovkou: :values.',
     'min'                  => [
         'numeric' => ':attribute musí mať aspoň :min.',
         'file'    => ':attribute musí mať aspoň :min kilobajtov.',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute musí byť reťazec znakov.',
     'timezone'             => ':attribute musí byť platné časové pásmo.',
     'unique'               => ':attribute už existuje.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute musí mať formát URL.',
 
     /*

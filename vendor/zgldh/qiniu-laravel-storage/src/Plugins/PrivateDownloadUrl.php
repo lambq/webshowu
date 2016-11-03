@@ -30,9 +30,9 @@
             return 'privateDownloadUrl';
         }
 
-        public function handle($path = null, $domainType = 'default')
+        public function handle($path = null, $settings = 'default')
         {
             $adapter = $this->filesystem->getAdapter();
-            return $adapter->privateDownloadUrl($path, $domainType);
+            return $adapter->privateDownloadUrl($path, $settings);
         }
     }

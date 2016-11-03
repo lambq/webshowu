@@ -38,6 +38,7 @@ return [
     'distinct'             => 'El campo :attribute contiene un valor duplicado.',
     'email'                => ':attribute no es un correo válido',
     'exists'               => ':attribute es inválido.',
+    'file'                 => 'El campo :attribute debe ser un archivo.',
     'filled'               => 'El campo :attribute es obligatorio.',
     'image'                => ':attribute debe ser una imagen.',
     'in'                   => ':attribute es inválido.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute no debe tener más de :max elementos.',
     ],
     'mimes'                => ':attribute debe ser un archivo con formato: :values.',
+    'mimetypes'            => ':attribute debe ser un archivo con formato: :values.',
     'min'                  => [
         'numeric' => 'El tamaño de :attribute debe ser de al menos :min.',
         'file'    => 'El tamaño de :attribute debe ser de al menos :min kilobytes.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'El campo :attribute debe ser una cadena de caracteres.',
     'timezone'             => 'El :attribute debe ser una zona válida.',
     'unique'               => ':attribute ya ha sido registrado.',
+    'uploaded'             => 'Subir :attribute ha fallado.',
     'url'                  => 'El formato :attribute es inválido.',
 
     /*

@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute 형식은 유효하지 않습니다.',
     'exists'               => '선택된 :attribute은(는) 유효하지 않습니다.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute 필드는 필수입니다.',
     'image'                => ':attribute은(는) 반드시 이미지여야 합니다.',
     'in'                   => '선택된 :attribute은(는) 유효하지 않습니다.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute은(는) 반드시 :max 아이템보다 작아야 합니다.',
     ],
     'mimes'                => ':attribute은(는) 반드시 다음의 파일 형식이어야 합니다: :values.',
+    'mimetypes'            => ':attribute은(는) 반드시 다음의 파일 형식이어야 합니다: :values.',
     'min'                  => [
         'numeric' => ':attribute은(는) 반드시 :min 보다 커야 합니다.',
         'file'    => ':attribute은(는) 반드시 :min 킬로바이트보다 커야 합니다.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => ':attribute은(는) 올바른 시간대 이어야 합니다.',
     'unique'               => ':attribute은(는) 이미 사용중 입니다.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute 형식은 유효하지 않습니다.',
 
     /*

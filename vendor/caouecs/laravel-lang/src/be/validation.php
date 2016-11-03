@@ -38,6 +38,7 @@ return [
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Поле :attribute павінна быць сапраўдным электронным адрасам.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Поле :attribute абавязкова для запаўнення.',
     'exists'               => 'Выбранае значэнне для :attribute некарэктна.',
     'image'                => 'Поле :attribute павінна быць малюнкам.',
@@ -53,6 +54,7 @@ return [
         'array'   => 'Колькасць элементаў у поле :attribute не можа перавышаць :max.',
     ],
     'mimes'                => 'Поле :attribute павінна быць файлам аднаго з наступных тыпаў: :values.',
+    'mimetypes'            => 'Поле :attribute павінна быць файлам аднаго з наступных тыпаў: :values.',
     'min'                  => [
         'numeric' => 'Поле :attribute павінна быць не менш :min.',
         'file'    => 'Памер файла ў полее :attribute павінен быць не менш :min кілабайт.',
@@ -80,6 +82,7 @@ return [
     'string'               => 'Поле :attribute павінна быць радком.',
     'timezone'             => 'Поле :attribute павінна быць сапраўдным гадзінным поясам.',
     'unique'               => 'Такое значэнне поля :attribute ўжо існуе.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Поле :attribute мае памылковы фармат.',
 
     /*

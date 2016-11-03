@@ -34,10 +34,11 @@ return [
     'different'            => 'Isian :attribute dan :other harus berbeda.',
     'digits'               => 'Isian :attribute harus berupa angka :digits.',
     'digits_between'       => 'Isian :attribute harus antara angka :min dan :max.',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
+    'dimensions'           => 'Bidang :attribute tidak memiliki dimensi gambar yang valid.',
     'distinct'             => 'Bidang isian :attribute memiliki nilai yang duplikat.',
     'email'                => 'Isian :attribute harus berupa alamat surel yang valid.',
     'exists'               => 'Isian :attribute yang dipilih tidak valid.',
+    'file'                 => 'Bidang :attribute harus berupa sebuah berkas.',
     'filled'               => 'Bidang isian :attribute wajib diisi.',
     'image'                => 'Isian :attribute harus berupa gambar.',
     'in'                   => 'Isian :attribute yang dipilih tidak valid.',
@@ -52,6 +53,7 @@ return [
         'array'   => 'Isian :attribute seharusnya tidak lebih dari :max item.',
     ],
     'mimes'                => 'Isian :attribute harus dokumen berjenis : :values.',
+    'mimetypes'            => 'Isian :attribute harus dokumen berjenis : :values.',
     'min'                  => [
         'numeric' => 'Isian :attribute harus minimal :min.',
         'file'    => 'Isian :attribute harus minimal :min kilobytes.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'Isian :attribute harus berupa string.',
     'timezone'             => 'Isian :attribute harus berupa zona waktu yang valid.',
     'unique'               => 'Isian :attribute sudah ada sebelumnya.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Format isian :attribute tidak valid.',
 
     /*

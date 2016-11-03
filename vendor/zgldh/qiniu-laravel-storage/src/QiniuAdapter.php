@@ -196,7 +196,8 @@ class QiniuAdapter extends AbstractAdapter
         $params = null,
         $mime = 'application/octet-stream',
         $checkCrc = false
-    ) {
+    )
+    {
         if ($fileResource === false) {
             throw new \Exception("file can not open", 1);
         }
@@ -490,12 +491,25 @@ class QiniuAdapter extends AbstractAdapter
         return $location;
     }
 
-    public function privateDownloadUrl($path, $domainType = 'default')
+    /**
+     * @param $path
+     * @param string|array $settings ['domain'=>'default', 'expires'=>3600]
+     * @return string
+     */
+    public function privateDownloadUrl($path, $settings = 'default')
     {
-        $this->pathPrefix = $this->prefixedDomains[$domainType];
+        $expires = 3600;
+        $domain = 'default';
+        if (is_array($settings)) {
+            $expires = isset($settings['expires']) ? $settings['expires'] : $expires;
+            $domain = isset($settings['domain']) ? $settings['domain'] : $domain;
+        } else {
+            $domain = $settings;
+        }
+        $this->pathPrefix = $this->prefixedDomains[$domain];
         $auth = $this->getAuth();
         $location = $this->applyPathPrefix($path);
-        $authUrl = $auth->privateDownloadUrl($location);
+        $authUrl = $auth->privateDownloadUrl($location, $expires);
 
         return $authUrl;
     }
@@ -575,7 +589,8 @@ class QiniuAdapter extends AbstractAdapter
         $expires = 3600,
         $policy = null,
         $strictPolicy = true
-    ) {
+    )
+    {
         $auth = $this->getAuth();
 
         $token = $auth->uploadToken(

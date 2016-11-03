@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute formaty ýalňyş.',
     'exists'               => 'Saýlanan :attribute ýalňyş.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute meýdany zerur.',
     'image'                => ':attribute surat bolmalydyr.',
     'in'                   => ':attribute mukdary ýalňyş.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute iň az :max maddadan ybarat bolmalydyr.',
     ],
     'mimes'                => ':attribute faýlň formaty :values bolmalydyr.',
+    'mimetypes'            => ':attribute faýlň formaty :values bolmalydyr.',
     'min'                  => [
         'numeric' => ':attribute mukdary :min dan köp bolmalydyr.',
         'file'    => ':attribute mukdary :min kilobaýtdan köp bolmalydyr.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => ':attribute dogry zolak bolmalydyr.',
     'unique'               => ':attribute önden hasaba alyndy.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute formaty ýalňyş.',
 
     /*

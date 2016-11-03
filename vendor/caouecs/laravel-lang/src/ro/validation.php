@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Câmpul :attribute trebuie să fie o adresă de e-mail validă.',
     'exists'               => 'Câmpul :attribute selectat nu este valid.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Câmpul :attribute trebuie completat.',
     'image'                => 'Câmpul :attribute trebuie să fie o imagine.',
     'in'                   => 'Câmpul :attribute selectat nu este valid.',
@@ -52,6 +53,7 @@ return [
         'array'   => 'Câmpul :attribute nu poate avea mai mult de :max elemente.',
     ],
     'mimes'                => 'Câmpul :attribute trebuie să fie un fișier de tipul: :values.',
+    'mimetypes'            => 'Câmpul :attribute trebuie să fie un fișier de tipul: :values.',
     'min'                  => [
         'numeric' => 'Câmpul :attribute nu poate fi mai mic de :min.',
         'file'    => 'Câmpul :attribute trebuie să aibă cel puțin :min kiloocteți.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'Câmpul :attribute trebuie să fie string.',
     'timezone'             => 'Câmpul :attribute trebuie să fie un fus orar valid.',
     'unique'               => 'Câmpul :attribute a fost deja folosit.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Câmpul :attribute nu este un URL valid.',
 
     /*

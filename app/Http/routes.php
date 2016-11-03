@@ -38,7 +38,6 @@ Route::group(['as' => 'front::'], function () {
     Route::get('/ceshi', 'CeshiController@index');
 });
 
-
 Route::group(['as' => 'admin::'], function () {
     //自带登陆机制——扩展admin
     Route::get('admin/login', 'Admin\AuthController@showLoginForm');

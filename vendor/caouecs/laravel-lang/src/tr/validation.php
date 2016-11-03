@@ -34,17 +34,18 @@ return [
     'different'            => ':attribute ile :other birbirinden farklı olmalıdır.',
     'digits'               => ':attribute :digits rakam olmalıdır.',
     'digits_between'       => ':attribute :min ile :max arasında rakam olmalıdır.',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
-    'distinct'             => 'The :attribute field has a duplicate value.',
+    'dimensions'           => ':attribute görsel ölçüleri geçersiz.',
+    'distinct'             => ':attribute alanı yinelenen bir değere sahip.',
     'email'                => ':attribute biçimi geçersiz.',
     'exists'               => 'Seçili :attribute geçersiz.',
+    'file'                 => ':attribute dosya olmalıdır.',
     'filled'               => ':attribute alanı gereklidir.',
     'image'                => ':attribute alanı resim dosyası olmalıdır.',
     'in'                   => ':attribute değeri geçersiz.',
-    'in_array'             => 'The :attribute field does not exist in :other.',
+    'in_array'             => ':attribute alanı :other içinde mevcut değil.',
     'integer'              => ':attribute tamsayı olmalıdır.',
     'ip'                   => ':attribute geçerli bir IP adresi olmalıdır.',
-    'json'                 => 'The :attribute must be a valid JSON string.',
+    'json'                 => ':attribute geçerli bir JSON değişkeni olmalıdır.',
     'max'                  => [
         'numeric' => ':attribute değeri :max değerinden küçük olmalıdır.',
         'file'    => ':attribute değeri :max kilobayt değerinden küçük olmalıdır.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute değeri :max adedinden az nesneye sahip olmalıdır.',
     ],
     'mimes'                => ':attribute dosya biçimi :values olmalıdır.',
+    'mimetypes'            => ':attribute dosya biçimi :values olmalıdır.',
     'min'                  => [
         'numeric' => ':attribute değeri :min değerinden büyük olmalıdır.',
         'file'    => ':attribute değeri :min kilobayt değerinden büyük olmalıdır.',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute dizge olmalıdır.',
     'timezone'             => ':attribute geçerli bir saat dilimi olmalıdır.',
     'unique'               => ':attribute daha önceden kayıt edilmiş.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute biçimi geçersiz.',
 
     /*

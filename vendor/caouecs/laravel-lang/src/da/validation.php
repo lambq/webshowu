@@ -38,6 +38,7 @@ return [
     'distinct'             => ':attribute har en duplikatværdi.',
     'email'                => ':attribute skal være en gyldig e-mailadresse.',
     'exists'               => 'Det valgte :attribute er ugyldig.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute skal udfyldes.',
     'image'                => ':attribute skal være et billede.',
     'in'                   => 'Det valgte :attribute er ugyldig.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute må ikke indeholde mere end :max elementer.',
     ],
     'mimes'                => ':attribute skal være en fil af typen: :values.',
+    'mimetypes'            => ':attribute skal være en fil af typen: :values.',
     'min'                  => [
         'numeric' => ':attribute skal være mindst :min.',
         'file'    => ':attribute skal være mindst :min kilobytes.',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute skal være en streng.',
     'timezone'             => ':attribute skal være en gyldig tidszone.',
     'unique'               => ':attribute er allerede taget.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute formatet er ugyldigt.',
 
     /*

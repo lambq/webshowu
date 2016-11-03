@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute no est bàlidu.',
     'exists'               => ':attribute seberadu/a no est bàlidu.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute est pedidu.',
     'image'                => ":attribute depet èssere un'immàgine.",
     'in'                   => ':attribute seberadu no est bàlidu.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute non podet tènnere prus de :max elementos.',
     ],
     'mimes'                => ':attribute depet èssere de tipu: :values.',
+    'mimetypes'            => ':attribute depet èssere de tipu: :values.',
     'min'                  => [
         'numeric' => ':attribute depet bàlere a su mancu :min.',
         'file'    => ':attribute depet èssere prus mannu de :min kilobytes.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => ':attribute depet èssere una zona bàlida.',
     'unique'               => ':attribute est istadu giai impreadu.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ":attribute depet èssere un'URL.",
 
     /*

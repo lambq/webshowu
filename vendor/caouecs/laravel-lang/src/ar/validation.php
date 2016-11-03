@@ -38,6 +38,7 @@ return [
     'distinct'             => 'للحقل :attribute قيمة مُكرّرة.',
     'email'                => 'يجب أن يكون :attribute عنوان بريد إلكتروني صحيح البُنية',
     'exists'               => 'الحقل :attribute لاغٍ',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'الحقل :attribute إجباري',
     'image'                => 'يجب أن يكون الحقل :attribute صورةً',
     'in'                   => 'الحقل :attribute لاغٍ',
@@ -52,6 +53,7 @@ return [
         'array'   => 'يجب أن لا يحتوي الحقل :attribute على أكثر من :max عناصر/عنصر.',
     ],
     'mimes'                => 'يجب أن يكون الحقل ملفًا من نوع : :values.',
+    'mimetypes'            => 'يجب أن يكون الحقل ملفًا من نوع : :values.',
     'min'                  => [
         'numeric' => 'يجب أن تكون قيمة الحقل :attribute أكبر من :min.',
         'file'    => 'يجب أن يكون حجم الملف :attribute أكبر من :min كيلوبايت',
@@ -79,6 +81,7 @@ return [
     'string'               => 'يجب أن يكون الحقل :attribute نصآ.',
     'timezone'             => 'يجب أن يكون :attribute نطاقًا زمنيًا صحيحًا',
     'unique'               => 'قيمة الحقل :attribute مُستخدمة من قبل',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'صيغة الرابط :attribute غير صحيحة',
 
     /*

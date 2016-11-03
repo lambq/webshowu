@@ -73,7 +73,7 @@ class SocialiteManager implements FactoryInterface
      */
     public function __construct(array $config, Request $request = null)
     {
-        $this->config  = new Config($config);
+        $this->config = new Config($config);
         $this->request = $request ?: $this->createDefaultRequest();
     }
 
@@ -124,9 +124,9 @@ class SocialiteManager implements FactoryInterface
      *
      * @param string $driver
      *
-     * @return mixed
-     *
      * @throws \InvalidArgumentException
+     *
+     * @return mixed
      */
     protected function createDriver($driver)
     {
@@ -251,27 +251,5 @@ class SocialiteManager implements FactoryInterface
     public function __call($method, $parameters)
     {
         return call_user_func_array([$this->driver(), $method], $parameters);
-    }
-
-    /**
-     * Set Request instance.
-     *
-     * @param Request $request
-     */
-    public function setRequest(Request $request)
-    {
-        $this->request = $request;
-
-        return $this;
-    }
-
-    /**
-     * Return the request instance.
-     *
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
-    public function getRequest()
-    {
-        return $this->request;
     }
 }

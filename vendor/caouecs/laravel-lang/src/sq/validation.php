@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute formati është i pasaktë.',
     'exists'               => ':attribute përzgjedhur është i/e pasaktë.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Fusha :attribute është e kërkuar.',
     'image'                => ':attribute duhet të jetë imazh.',
     'in'                   => ':attribute përzgjedhur është i/e pasaktë.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute nuk mund të ketë më tepër se :max elemente.',
     ],
     'mimes'                => ':attribute duhet të jetë një dokument i tipit: :values.',
+    'mimetypes'            => ':attribute duhet të jetë një dokument i tipit: :values.',
     'min'                  => [
         'numeric' => ':attribute nuk mund të jetë më pak se :min.',
         'file'    => ':attribute nuk mund të jetë më pak se :min kilobajtë.',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute duhet të jetë varg.',
     'timezone'             => ':attribute duhet të jetë zonë e saktë.',
     'unique'               => ':attribute është marrë tashmë.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Formati i :attribute është i pasaktë.',
 
     /*

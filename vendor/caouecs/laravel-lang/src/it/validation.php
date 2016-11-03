@@ -38,6 +38,7 @@ return [
     'distinct'             => ':attribute contiene un valore duplicato.',
     'email'                => ':attribute non è valido.',
     'exists'               => ':attribute selezionato/a non è valido.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Il campo :attribute è richiesto.',
     'image'                => ":attribute deve essere un'immagine.",
     'in'                   => ':attribute selezionato non è valido.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute non può avere più di :max elementi.',
     ],
     'mimes'                => ':attribute deve essere del tipo: :values.',
+    'mimetypes'            => ':attribute deve essere del tipo: :values.',
     'min'                  => [
         'numeric' => ':attribute deve essere almeno :min.',
         'file'    => ':attribute deve essere almeno di :min kilobytes.',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute deve essere una stringa.',
     'timezone'             => ':attribute deve essere una zona valida.',
     'unique'               => ':attribute è stato già utilizzato.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Il formato del campo :attribute non è valido.',
 
     /*

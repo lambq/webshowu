@@ -42,6 +42,13 @@ class WeChatProvider extends AbstractProvider implements ProviderInterface
     protected $scopes = ['snsapi_login'];
 
     /**
+     * Indicates if the session state should be utilized.
+     *
+     * @var bool
+     */
+    protected $stateless = true;
+
+    /**
      * {@inheritdoc}.
      */
     protected function getAuthUrl($state)
@@ -75,7 +82,7 @@ class WeChatProvider extends AbstractProvider implements ProviderInterface
             'redirect_uri'  => $this->redirectUrl,
             'response_type' => 'code',
             'scope'         => $this->formatScopes($this->scopes, $this->scopeSeparator),
-            'state'         => $state,
+            'state'         => $state ?: md5(time()),
         ];
     }
 
@@ -166,8 +173,8 @@ class WeChatProvider extends AbstractProvider implements ProviderInterface
     protected function removeCallback($response)
     {
         if (strpos($response, 'callback') !== false) {
-            $lpos     = strpos($response, '(');
-            $rpos     = strrpos($response, ')');
+            $lpos = strpos($response, '(');
+            $rpos = strrpos($response, ')');
             $response = substr($response, $lpos + 1, $rpos - $lpos - 1);
         }
 

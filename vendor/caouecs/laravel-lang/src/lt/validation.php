@@ -34,9 +34,10 @@ return [
     'different'            => 'Laukų :attribute ir :other reikšmės turi skirtis.',
     'digits'               => 'Laukas :attribute turi būti sudarytas iš :digits skaitmenų.',
     'digits_between'       => 'Laukas :attribute tuti turėti nuo :min iki :max skaitmenų.',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
+    'dimensions'           => 'Lauke :attribute įkeltas paveiksliukas neatitinka išmatavimų reikalavimo.',
     'distinct'             => 'Laukas :attribute pasikartoja.',
     'email'                => 'Lauko :attribute reikšmė turi būti galiojantis el. pašto adresas.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Laukas :attribute turi būti užpildytas.',
     'exists'               => 'Pasirinkta negaliojanti :attribute reikšmė.',
     'image'                => 'Lauko :attribute reikšmė turi būti paveikslėlis.',
@@ -52,6 +53,7 @@ return [
         'array'   => 'Elementų kiekis lauke :attribute negali turėti daugiau nei :max elementų.',
     ],
     'mimes'                => 'Lauko reikšmė :attribute turi būti failas vieno iš sekančių tipų: :values.',
+    'mimetypes'            => 'Lauko reikšmė :attribute turi būti failas vieno iš sekančių tipų: :values.',
     'min'                  => [
         'numeric' => 'Lauko :attribute reikšmė turi būti ne mažesnė nei :min.',
         'file'    => 'Failo dydis lauke :attribute turi būti ne mažesnis nei :min kilobaitų.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'Laukas :attribute turi būti tekstinis.',
     'timezone'             => 'Lauko :attribute reikšmė turi būti galiojanti laiko zona.',
     'unique'               => 'Tokia :attribute reikšmė jau pasirinkta.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Negaliojantis lauko :attribute formatas.',
 
     /*

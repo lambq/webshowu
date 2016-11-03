@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Trường :attribute phải là một địa chỉ email hợp lệ.',
     'exists'               => 'Giá trị đã chọn trong trường :attribute không hợp lệ.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Trường :attribute không được bỏ trống.',
     'image'                => 'Các tập tin trong trường :attribute phải là định dạng hình ảnh.',
     'in'                   => 'Giá trị đã chọn trong trường :attribute không hợp lệ.',
@@ -52,6 +53,7 @@ return [
         'array'   => 'Trường :attribute không được lớn hơn :max phần tử.',
     ],
     'mimes'                => 'Trường :attribute phải là một tập tin có định dạng: :values.',
+    'mimetypes'            => 'Trường :attribute phải là một tập tin có định dạng: :values.',
     'min'                  => [
         'numeric' => 'Trường :attribute phải tối thiểu là :min.',
         'file'    => 'Dung lượng tập tin trong trường :attribute phải tối thiểu :min kB.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'Trường :attribute phải là một múi giờ hợp lệ.',
     'unique'               => 'Trường :attribute đã có trong CSDL.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Trường :attribute không giống với định dạng một URL.',
 
     /*

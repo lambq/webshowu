@@ -37,6 +37,7 @@ return [
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Rhaid i :attribute fod yn gyfeiriad ebost dilys.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Rhaid cynnwys :attribute.',
     'exists'               => 'Nid yw :attribute yn ddilys.',
     'image'                => 'Rhaid i :attribute fod yn lun.',
@@ -52,6 +53,7 @@ return [
         'array'   => 'Ni chai :attribute fod yn fwy na :max eitem.',
     ],
     'mimes'                => "Rhaid i :attribute fod yn ffeil o'r math: :values.",
+    'mimetypes'            => "Rhaid i :attribute fod yn ffeil o'r math: :values.",
     'min'                  => [
         'numeric' => 'Rhaid i :attribute fod o leiaf :min.',
         'file'    => 'Rhaid i :attribute fod o leiaf :min kilobytes.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'Rhaid i :attribute fod yn timezone dilys.',
     'unique'               => 'Mae :attribute eisoes yn bodoli.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Nid yw fformat :attribute yn ddilys.',
 
     /*

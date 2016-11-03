@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute को इमेल ठेगाना मिलेन।',
     'exists'               => 'छानिएको :attribute अमान्य छ।',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => ':attribute दिइएको हुनुपर्छ।',
     'image'                => ':attribute मा फोटो हुनुपर्छ।',
     'in'                   => 'छानिएको :attribute अमान्य छ।',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute मा :max भन्दा बढी आइटम हुनुहुदैन।',
     ],
     'mimes'                => ':attribute :values प्रकारको फाइल हुनुपर्छ।',
+    'mimetypes'            => ':attribute :values प्रकारको फाइल हुनुपर्छ।',
     'min'                  => [
         'numeric' => ':attribute कम्तिमा :min हुनुपर्छ।',
         'file'    => ':attribute कम्तिमा :min kilobytesको हुनुपर्छ।',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute string हुनुपर्छ।',
     'timezone'             => ':attribute मान्य समय क्षेत्र हुनुपर्छ।',
     'unique'               => 'यो :attribute पहिले नै लिई सकेको छ।',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute को ढांचा मिलेन।',
 
     /*

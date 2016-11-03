@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Полето :attribute е в невалиден формат.',
     'exists'               => 'Избранато поле :attribute вече съществува.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'Полето :attribute е задължително.',
     'image'                => 'Полето :attribute трябва да бъде изображение.',
     'in'                   => 'Избраното поле :attribute е невалидно.',
@@ -52,6 +53,7 @@ return [
         'array'   => 'Полето :attribute трябва да има по-малко от :max елемента.',
     ],
     'mimes'                => 'Полето :attribute трябва да бъде файл от тип: :values.',
+    'mimetypes'            => 'Полето :attribute трябва да бъде файл от тип: :values.',
     'min'                  => [
         'numeric' => 'Полето :attribute трябва да бъде минимум :min.',
         'file'    => 'Полето :attribute трябва да бъде минимум :min килобайта.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'Полето :attribute трябва да бъде знаков низ.',
     'timezone'             => 'Полето :attribute трябва да съдържа валидна часова зона.',
     'unique'               => 'Полето :attribute вече съществува.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'Полето :attribute е в невалиден формат.',
 
     /*

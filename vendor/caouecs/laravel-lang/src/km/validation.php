@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute ទំរង់នេះមិនត្រឹមត្រូវ។',
     'exists'               => 'ការជ្រើសរើស :attribute ត្រឹមត្រូវ។',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'ទំរង់ :attribute នេះគឺទាមទារឲ្យមាន។',
     'image'                => ':attribute ត្រូវតៃជារូបភាព។',
     'in'                   => 'ការជ្រើសរើស :attribute មិនត្រឹមត្រូវ។',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute មិនត្រូវច្រើនជាងធាតុនេះ :max។',
     ],
     'mimes'                => ':attribute ត្រូវតែជាប្រភេទឯកសារ type: :values នេះ។',
+    'mimetypes'            => ':attribute ត្រូវតែជាប្រភេទឯកសារ type: :values នេះ។',
     'min'                  => [
         'numeric' => ':attribute ត្រូវតែតូចជាង :min។',
         'file'    => ':attribute ត្រូវតៃតួចជាង :min គីឡូបៃ។',
@@ -79,6 +81,7 @@ return [
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => ':attribute ត្រូវបានប្រើរួចហើយ។',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => ':attribute ទំរង់ត្រឹមត្រូវ។',
 
     /*

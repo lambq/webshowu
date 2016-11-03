@@ -34,10 +34,11 @@ return [
     'different'            => ':attribute و :other باید متفاوت باشند.',
     'digits'               => ':attribute باید :digits رقم باشد.',
     'digits_between'       => ':attribute باید بین :min و :max رقم باشد.',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
+    'dimensions'           => ':attribute دارای ابعاد تصویر نامعتبر می‌باشد.',
     'distinct'             => 'فیلد :attribute دارای یک مقدار تکراری می‌باشد.',
     'email'                => 'فرمت :attribute معتبر نیست.',
     'exists'               => ':attribute انتخاب شده، معتبر نیست.',
+    'file'                 => ':attribute باید یک فایل باشد',
     'filled'               => 'فیلد :attribute الزامی است',
     'image'                => ':attribute باید تصویر باشد.',
     'in'                   => ':attribute انتخاب شده، معتبر نیست.',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute نباید بیشتر از :max آیتم باشد.',
     ],
     'mimes'                => ':attribute باید یکی از فرمت های :values باشد.',
+    'mimetypes'            => ':attribute باید یکی از فرمت های :values باشد.',
     'min'                  => [
         'numeric' => ':attribute نباید کوچکتر از :min باشد.',
         'file'    => ':attribute نباید کوچکتر از :min کیلوبایت باشد.',
@@ -79,6 +81,7 @@ return [
     'string'               => 'فیلد :attribute باید یک String باشد.',
     'timezone'             => 'فیلد :attribute باید یک منطقه صحیح باشد.',
     'unique'               => ':attribute قبلا انتخاب شده است.',
+    'uploaded'             => 'The :attribute uploading failed.',
     'url'                  => 'فرمت آدرس :attribute اشتباه است.',
 
     /*
@@ -138,6 +141,7 @@ return [
         'time'                  => 'زمان',
         'available'             => 'موجود',
         'size'                  => 'اندازه',
+        'terms'                 => 'شرایط',
     ],
 
 ];

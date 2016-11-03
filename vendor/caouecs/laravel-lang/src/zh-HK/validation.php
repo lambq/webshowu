@@ -34,10 +34,11 @@ return [
     'different'            => ':attribute 與 :other 必須不同。',
     'digits'               => ':attribute 必須是 :digits 位數字。',
     'digits_between'       => ':attribute 必須介乎 :min 至 :max 位數字。',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
+    'dimensions'           => ':attribute 圖片尺寸不正確。',
     'distinct'             => ':attribute 已經存在。',
     'email'                => ':attribute 的格式無效。',
     'exists'               => ':attribute 不存在。',
+    'file'                 => ':attribute 必須是文件。',
     'filled'               => ':attribute 不能留空。',
     'image'                => ':attribute 必須是一張圖片。',
     'in'                   => '所揀選的 :attribute 選項無效。',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute 不能多於 :max 個項目。',
     ],
     'mimes'                => ':attribute 必須為 :values 的檔案。',
+    'mimetypes'            => ':attribute 必須為 :values 的檔案。',
     'min'                  => [
         'numeric' => ':attribute 不能小於 :min。',
         'file'    => ':attribute 不能小於 :min kb。',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute 必須是一個字符串',
     'timezone'             => ':attribute 必須是一個正確的時區值。',
     'unique'               => ':attribute 已經存在。',
+    'uploaded'             => ':attribute 上傳失敗。',
     'url'                  => ':attribute 的格式錯誤。',
 
     /*

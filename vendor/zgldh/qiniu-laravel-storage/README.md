@@ -69,6 +69,11 @@
     $disk->getDriver()->downloadUrl('file.jpg', 'https');       //获取HTTPS下载地址
     $disk->getDriver()->privateDownloadUrl('file.jpg');         //获取私有bucket下载地址
     $disk->getDriver()->privateDownloadUrl('file.jpg', 'https');//获取私有bucket的HTTPS下载地址
+    $disk->getDriver()->privateDownloadUrl('file.jpg', 
+                                        [
+                                            'domain'=>'https',
+                                            'expires'=>3600
+                                        ]);                     //获取私有bucket的HTTPS下载地址。超时 3600 秒。
     $disk->getDriver()->imageInfo('file.jpg');                  //获取图片信息
     $disk->getDriver()->imageExif('file.jpg');                  //获取图片EXIF信息
     $disk->getDriver()->imagePreviewUrl('file.jpg','imageView2/0/w/100/h/200');                         //获取图片预览URL
@@ -111,6 +116,11 @@
     $disk->downloadUrl('file.jpg', 'https');            //获取HTTPS下载地址
     $disk->privateDownloadUrl('file.jpg');              //获取私有bucket下载地址
     $disk->privateDownloadUrl('file.jpg', 'https');     //获取私有bucket的HTTPS下载地址
+    $disk->privateDownloadUrl('file.jpg', 
+                            [
+                                'domain'=>'https',
+                                'expires'=>3600
+                            ]);                         //获取私有bucket的HTTPS下载地址。超时 3600 秒。
     $disk->imageInfo('file.jpg');                       //获取图片信息
     $disk->imageExif('file.jpg');                       //获取图片EXIF信息
     $disk->imagePreviewUrl('file.jpg','imageView2/0/w/100/h/200');                          //获取图片预览URL

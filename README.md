@@ -1,5 +1,7 @@
 # 秀站分类目录
 
+[![For Laravel 5][badge_laravel]][link-github-repo]
+
 ## 有哪些模块？
 * 资讯文章管理模块
 * 目录网站管理模块
@@ -65,3 +67,17 @@
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
 * qq群：55725231
+
+# License
+
+MIT
+
+[badge_laravel]:      https://img.shields.io/badge/laravel-5.*-green.svg
+[badge_lumen]:        https://img.shields.io/badge/lumen-5.*-green.svg
+[badge_stable]:       https://img.shields.io/packagist/v/overtrue/laravel-lang.svg
+[badge_unstable]:     https://img.shields.io/packagist/vpre/overtrue/laravel-lang.svg
+[badge_downloads]:    https://img.shields.io/packagist/dt/overtrue/laravel-lang.svg?maxAge=2592000
+[badge_license]:      https://img.shields.io/packagist/l/overtrue/laravel-lang.svg?maxAge=2592000
+
+[link-github-repo]:   https://github.com/overtrue/laravel-lang
+[link-packagist]:   https://packagist.org/packages/overtrue/laravel-lang

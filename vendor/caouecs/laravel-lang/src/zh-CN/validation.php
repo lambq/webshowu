@@ -34,10 +34,11 @@ return [
     'different'            => ':attribute 和 :other 必须不同。',
     'digits'               => ':attribute 必须是 :digits 位的数字。',
     'digits_between'       => ':attribute 必须是介于 :min 和 :max 位的数字。',
-    'dimensions'           => 'The :attribute has invalid image dimensions.',
-    'distinct'             => ':attribute 已經存在。',
+    'dimensions'           => ':attribute 图片尺寸不正确。',
+    'distinct'             => ':attribute 已经存在。',
     'email'                => ':attribute 不是一个合法的邮箱。',
     'exists'               => ':attribute 不存在。',
+    'file'                 => ':attribute 必须是文件。',
     'filled'               => ':attribute 不能为空。',
     'image'                => ':attribute 必须是图片。',
     'in'                   => '已选的属性 :attribute 非法。',
@@ -52,6 +53,7 @@ return [
         'array'   => ':attribute 最多只有 :max 个单元。',
     ],
     'mimes'                => ':attribute 必须是一个 :values 类型的文件。',
+    'mimetypes'            => ':attribute 必须是一个 :values 类型的文件。',
     'min'                  => [
         'numeric' => ':attribute 必须大于等于 :min。',
         'file'    => ':attribute 大小不能小于 :min kb。',
@@ -79,6 +81,7 @@ return [
     'string'               => ':attribute 必须是一个字符串。',
     'timezone'             => ':attribute 必须是一个合法的时区值。',
     'unique'               => ':attribute 已经存在。',
+    'uploaded'             => ':attribute 上传失败。',
     'url'                  => ':attribute 格式不正确。',
 
     /*
@@ -122,7 +125,7 @@ return [
         'address'               => '地址',
         'phone'                 => '电话',
         'mobile'                => '手机',
-        'age'                   => '年轻',
+        'age'                   => '年龄',
         'sex'                   => '性别',
         'gender'                => '性别',
         'day'                   => '天',
