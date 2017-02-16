@@ -13,30 +13,40 @@
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
 </head>
 <body>
-<div class="am-g">
-  <div class="am-u-sm-2">
-    <ul class="am-nav">
-      <li ><a href="{{ url('/') }}">返回首页</a></li>
-      <li @if($site_nav == 'index') class="am-active" @endif ><a href="{{ url('/home') }}">个人信息</a></li>
-      <li @if($site_nav == '1') class="am-active" @endif ><a href="#">关联帐户</a></li>
-      <li @if($site_nav == 'Website') class="am-active" @endif ><a href="{{ url('/get_site') }}">我的站点</a></li>
-      <li @if($site_nav == 'Article') class="am-active" @endif ><a href="{{ url('/get_art') }}">我的投稿</a></li>
-      <li @if($site_nav == '1') class="am-active" @endif ><a href="{{ url('/logout') }}">安全退出</a></li>
-    </ul>
-  </div>
-  <div class="am-u-sm-10">
-    <!-- content -->
-    @yield('content')
-  </div>
-</div>
-
-
-
-
-
-
-
-
+    <div class="am-g">
+        <div class="am-u-sm-2">
+            <ul class="am-nav">
+                <li >
+                    <a href="{{ url('/') }}">返回首页</a>
+                </li>
+                <li class="am-btn @if($site_nav == 'index') am-active @else am-btn-default @endif">
+                    <a href="{{ url('/home') }}">个人信息</a>
+                </li>
+                <li class="am-btn @if($site_nav == '1') am-active @else am-btn-default @endif" >
+                    <a href="#">关联帐户</a>
+                </li>
+                <li class="am-btn @if($site_nav == 'Website') am-active @else am-btn-default @endif" >
+                    <a href="{{ url('/get_site') }}">我的站点</a>
+                </li>
+                <li class="am-btn @if($site_nav == 'Article') am-active @else am-btn-default @endif" >
+                    <a href="{{ url('/get_art') }}">我的投稿</a>
+                </li>
+                <li class="am-btn @if($site_nav == '1') am-active @else am-btn-default @endif" >
+                    <a href="{{ url('/logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
+                        安全退出
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="am-u-sm-10">
+            <!-- content -->
+            @yield('content')
+        </div>
+    </div>
 <!-- JavaScripts -->
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>

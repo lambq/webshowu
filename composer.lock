@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10edf5545418402da3bb50bbdda350bf",
-    "content-hash": "56a4c77608b1448e205982f07bea137c",
+    "hash": "9ba53d18b0024b24f7f3563d97d289d9",
+    "content-hash": "b89fc4e9c987ea0ea99ef51e6e29981c",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -556,6 +556,47 @@
                 "lambq"
             ],
             "time": "2016-11-01 12:50:11"
+        },
+        {
+            "name": "lambq/sdk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lambq/sdk.git",
+                "reference": "148384c86bbb02ac548f1469761a5934d65d1c87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/lambq/sdk/148384c86bbb02ac548f1469761a5934d65d1c87.zip",
+                "reference": "148384c86bbb02ac548f1469761a5934d65d1c87",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lambq\\Sdk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "lambq",
+                    "email": "415113157@qq.com"
+                }
+            ],
+            "description": "this a sdk for laravel5.* composer packagist.",
+            "keywords": [
+                "lambq",
+                "laravel",
+                "sdk"
+            ],
+            "time": "2017-02-15 07:51:01"
         },
         {
             "name": "laravel/framework",
@@ -4023,7 +4064,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "lambq/geetest": 20
+        "lambq/geetest": 20,
+        "lambq/sdk": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

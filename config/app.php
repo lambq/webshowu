@@ -181,7 +181,7 @@ return [
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class, //修改地方
         Roumen\Sitemap\SitemapServiceProvider::class, //修改地方
         Overtrue\LaravelSocialite\ServiceProvider::class, //修改地方
-
+        Lambq\Sdk\SdkServiceProvider::class, //修改地方
     ],
 
     /*

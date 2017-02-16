@@ -16,43 +16,53 @@
 <body>
 <!-- header -->
 <header class="am-topbar">
-  <div class="am-container">
-    <h1 class="am-topbar-brand">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
       <a href="{{ url('/') }}">秀站分类目录</a>
     </h1>
 
-    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}">
-      <span class="am-sr-only">导航切换</span>
-      <span class="am-icon-bars"></span>
-    </button>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}">
+          <span class="am-sr-only">导航切换</span>
+          <span class="am-icon-bars"></span>
+        </button>
 
-    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
-      <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li @if($site_nav == 'index') class="am-active" @endif><a href="{{ url('/') }}">首页</a></li>
-        {{--<li @if($site_nav == 'qrcode') class="am-active" @endif><a title="秀二维码" href="{{ url('/qrcode') }}">秀二维码</a></li>--}}
-        <li @if($site_nav == 'webdir') class="am-active" @endif><a title="秀目录" href="{{ url('/webdir') }}">秀目录</a></li>
-        <li @if($site_nav == 'article') class="am-active" @endif><a title="秀资讯" href="{{ url('/article') }}">秀资讯</a></li>
-        <!-- <li><a target="_blank" title="秀文档" href="http://doc.webshowu.com">秀文档</a></li> -->
-      </ul>
+        <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li @if($site_nav == 'index') class="am-active" @endif><a href="{{ url('/') }}">首页</a></li>
+                {{--<li @if($site_nav == 'qrcode') class="am-active" @endif><a title="秀二维码" href="{{ url('/qrcode') }}">秀二维码</a></li>--}}
+                <li @if($site_nav == 'webdir') class="am-active" @endif><a title="秀目录" href="{{ url('/webdir') }}">秀目录</a></li>
+                <li @if($site_nav == 'article') class="am-active" @endif><a title="秀资讯" href="{{ url('/article') }}">秀资讯</a></li>
+                <!-- <li><a target="_blank" title="秀文档" href="http://doc.webshowu.com">秀文档</a></li> -->
+            </ul>
 
-      <form class="am-topbar-form am-topbar-left am-form-inline" target="_blank" role="search" action="http://zhannei.baidu.com/cse/search" method="GET">
-        <div class="am-form-group">
-          <input type="text" name="q" class="am-form-field am-input-sm" placeholder="搜索">
-          <input type="hidden" name="s" value="5924146839921945097"/>
-        </div>
-      </form>
+            <form class="am-topbar-form am-topbar-left am-form-inline" target="_blank" role="search" action="http://zhannei.baidu.com/cse/search" method="GET">
+                <div class="am-form-group">
+                    <input type="text" name="q" class="am-form-field am-input-sm" placeholder="搜索">
+                    <input type="hidden" name="s" value="5924146839921945097"/>
+                </div>
+            </form>
 
-      <div class="am-topbar-right">
-      <div class="am-topbar-right">
-        @if (Auth::guest())
-        <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="秀站登录" href="{{ url('/login') }}" target="_blank">登录</a>
-        @else
-        <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="安全退出" href="{{ url('/logout') }}" target="_blank">安全退出</a>
-        <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="个人中心" href="{{ url('/home') }}" target="_blank">个人中心</a>
-        @endif
-      </div>
+
+            <div class="am-topbar-right">
+                @if (Auth::guest())
+                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="秀站登录" href="{{ url('/login') }}" target="_blank">
+                        登录
+                    </a>
+                @else
+                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="安全退出" href="{{ url('/logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
+                        安全退出
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="个人中心" href="{{ url('/home') }}" target="_blank">
+                        个人中心
+                    </a>
+                @endif
+            </div>
     </div>
-  </div>
+    </div>
 </header>
 
 <!-- content -->
