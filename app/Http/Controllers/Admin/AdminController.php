@@ -89,10 +89,44 @@ class AdminController extends Controller
 
 
         $link = Link::where('link_id', $request->id )->first();
-        $data['edit_id'] = $request->id;
         $data['link'] = $link;
         $data['myself'] = $request->user('admin');
         return view('admin.link_edit',$data);
+    }
+
+    /**
+     * 管理后台 秀友链管理编辑
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function link_update(Request $request)
+    {
+        $rules = [
+            'link_name' => 'required',
+            'link_url' => 'required',
+            'link_hide' => 'required',
+            'link_order' => 'required',
+        ];
+        $messages = [
+            'link_name.required' => '请输入链接名称！',
+            'link_url.required' => '请输入链接地址！',
+            'link_hide.required' => '请输入链接状态！',
+            'link_order.required' => '请输入链接排序！',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return Redirect::back()->withInput($request->all())->withErrors($validator);
+        }
+
+        Link::where('link_id', $request->edit_id)->update([
+            'link_name'     => $request->link_name,
+            'link_url'      => $request->link_url,
+            'link_logo'     => $request->link_logo,
+            'link_hide'     => $request->link_hide,
+            'link_order'    => $request->link_order,
+        ]);
+
+        return redirect::to('link')->with('success', $request->link_url.'已经修改成功了！');
     }
 
     /**
@@ -152,20 +186,20 @@ class AdminController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
+            return Redirect::back()->withInput($request->all())->withErrors($validator);
         }
 
         if(!$request->cate_id){
-            return redirect::back()->withErrors('请选择网站所属分类！');
+            return redirect::back()->withInput($request->all())->withErrors('请选择网站所属分类！');
         }else{
             $cate = Categorie::where('cate_id', $request->cate_id)->first();
             if ($cate['cate_childcount'] > 0) {
-                return redirect::back()->withErrors('指定的分类下有子分类，请选择子分类进行操作！');
+                return redirect::back()->withInput($request->all())->withErrors('指定的分类下有子分类，请选择子分类进行操作！');
             }
         }
 
         if(empty($request->web_name)) {
-            return redirect::back()->withErrors('请输入网站名称！');
+            return redirect::back()->withInput($request->all())->withErrors('请输入网站名称！');
         }
 
         if(!empty($request->web_tags)) {
@@ -180,7 +214,7 @@ class AdminController extends Controller
         }
 
         if(empty($request->web_intro)) {
-            return redirect::back()->withErrors('请输入网站简介！');
+            return redirect::back()->withInput($request->all())->withErrors('请输入网站简介！');
         }
 
         $request->web_ip = sprintf("%u", ip2long($request->getClientIp()));
@@ -212,7 +246,7 @@ class AdminController extends Controller
         });
         $BaiduPushZZ    = new BaiduPushZZ();
         $BaiduPushZZ->push(["http://www.webshowu.com/siteinfo-". $request->edit_id .".html"]);
-        return redirect::to('webdir')->with('success','密码修改成功！');
+        return redirect::to('webdir')->with('success', $request->web_url.'已经修改成功！');
     }
 
     /**

@@ -37,8 +37,10 @@
 >* 【php扩展】memcached
 >* 【额外程序】python的进程管理控制系统(supervisor)
 >* 【额外程序】linux的定时任务系统“只能精确的分钟”(cron/crontab)
-### webshowu 5.3版本
 
+### webshowu 5.3版本
+>* 【路由】前台，后台分离
+>* 【功能】站点地图
 
 ## 安装步骤
 [点击链接](https://github.com/lambq/webshowu/wiki/%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE)

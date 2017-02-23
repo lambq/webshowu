@@ -19,6 +19,7 @@ Route::group(['domain' => env('APP_URL')],function (){
         $router->get('github', 'GithubController@redirectToProvider');
         $router->get('github/callback', 'GithubController@handleProviderCallback');
     });
+    //前端的所有路由
     Route::group(['namespace' => 'Web','as' => 'Web'],function($router){
         $router->get('/', 'IndexController@index');
         $router->get('/tags/{str}', 'IndexController@tags');
@@ -49,6 +50,38 @@ Route::group(['domain' => env('APP_URL')],function (){
         $router->post('/add_art', 'HomeController@add_art_post');
         $router->get('/edit_art/{id}', 'HomeController@edit_art_get');
         $router->post('/edit_art', 'HomeController@edit_art_post');
+    });
+    //站点sitemap地图
+    Route::get('sitemap', function(){
+
+        // create new sitemap object
+        $sitemap = App::make("sitemap");
+
+        // add items to the sitemap (url, date, priority, freq)
+        $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+        // get all menus from db
+
+        $categories     = DB::table('categories')->orderBy('created_at', 'desc')->get();
+        foreach ($categories as $v)
+        {
+            $sitemap->add(URL::to('/')."/webdir/$v->cate_id", $v->updated_at, '0.9', 'weekly');
+        }
+
+        $websites   = DB::table('websites')->orderBy('created_at', 'desc')->get();
+        foreach ($websites as $v){
+            $sitemap->add(URL::to('/')."/siteinfo-$v->web_id.html", $v->updated_at, '0.9', 'weekly');
+        }
+
+        $articles   = DB::table('articles')
+            ->select('art_id','created_at','updated_at')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        foreach ($articles as $v){
+            $sitemap->add(URL::to('/')."/artinfo-$v->art_id.html", $v->updated_at, '0.9', 'weekly');
+        }
+        // generate your sitemap (format, filename)
+        $sitemap->store('xml', 'sitemap');
+        // this will generate file mysitemap.xml to your public folder
     });
 });
 //后台

@@ -10,18 +10,26 @@
 
 		<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 
-		<div class="am-g">
-				@if(count($errors) > 0)
-					<div class="am-alert am-alert-danger" data-am-alert>
-						<button type="button" class="am-close">&times;</button>
-						<p>
-							@foreach($errors->all() as $error)
-							{{ $error }} &nbsp;&nbsp;
-							@endforeach
-						</p>
-					</div>
-				@endif
+		@if(count($errors) > 0)
+			<div class="am-alert am-alert-danger" data-am-alert>
+				<button type="button" class="am-close">&times;</button>
+				<p>
+					@foreach($errors->all() as $error)
+						{{ $error }} &nbsp;&nbsp;
+					@endforeach
+				</p>
+			</div>
+		@endif
+		@if(Session::has('success'))
+			<div class="am-alert am-alert-success" data-am-alert>
+				<button type="button" class="am-close">&times;</button>
+				<p>
+					{{ Session::get('success') }}
+				</p>
+			</div>
+		@endif
 
+		<div class="am-g">
 				<form class="am-form" name="myfrom" id="myfrom" method="post" action="{{ url('webdir') }}">
 					<fieldset>
 						{{ csrf_field() }}

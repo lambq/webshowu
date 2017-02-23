@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>XML Sitemap Index</title>
+<title>秀站分类目录</title>
 <script type="text/javascript" src="https://cdn.roumen.it/repo/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="https://cdn.roumen.it/repo/jquery.tablesorter/2.0.5/jquery.tablesorter.min.js"></script>
 <script	type="text/javascript"><![CDATA[

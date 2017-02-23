@@ -8,6 +8,25 @@
 
 		<hr>
 
+		@if(count($errors) > 0)
+			<div class="am-alert am-alert-danger" data-am-alert>
+				<button type="button" class="am-close">&times;</button>
+				<p>
+					@foreach($errors->all() as $error)
+						{{ $error }} &nbsp;&nbsp;
+					@endforeach
+				</p>
+			</div>
+		@endif
+		@if(Session::has('success'))
+			<div class="am-alert am-alert-success" data-am-alert>
+				<button type="button" class="am-close">&times;</button>
+				<p>
+					{{ Session::get('success') }}
+				</p>
+			</div>
+		@endif
+
 		<div class="am-g">
 			<div class="am-u-sm-12 am-scrollable-horizontal">
 				<form class="am-form">
