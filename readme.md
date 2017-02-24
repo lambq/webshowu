@@ -42,6 +42,10 @@
 >* 【路由】前台，后台分离
 >* 【功能】站点地图
 
+### 秀站分类目录 版本
+>* [5.2版本amazeui主题点击下载链接](https://github.com/lambq/webshowu/releases/tag/v1.0)
+>* [5.3版本amazeui主题点击下载链接](https://github.com/lambq/webshowu/releases/tag/v2.0)
+
 ## 安装步骤
 [点击链接](https://github.com/lambq/webshowu/wiki/%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE)
 
