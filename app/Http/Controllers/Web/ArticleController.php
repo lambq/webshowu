@@ -60,6 +60,7 @@ class ArticleController extends Controller
             $data['site_keywords'] = '秀站长,秀seo,秀运营,秀技术,秀资讯,奇趣科技,不一样的网站';
             $data['site_description'] = '秀资讯是一个不一样的资讯网站，每天更新最新站长运营、SEO技术、奇趣科技的文章，是一个值得收藏的网站。';
         }
+        $data['newsites']   = Website::orderBy('created_at','desc')->take('8')->get();
         $data['pages'] = Page::get();
         $data['art_list'] = $this->art_list;
         $data['site_list'] = $this->site_list;
@@ -85,6 +86,8 @@ class ArticleController extends Controller
             $data['prev'] = $this->getPrevArticleId($request->id,$articles->cate_id);
             $data['next'] = $this->getNextArticleId($request->id,$articles->cate_id);
             $data['arttags'] = explode(',',$articles->art_tags);
+
+            $data['newsites']   = Website::orderBy('created_at','desc')->take('8')->get();
             $data['pages'] = Page::get();
             $data['site_nav'] = 'article';
             $art_data['art_views'] = $articles->art_views+1;

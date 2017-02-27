@@ -19,19 +19,18 @@ class IndexController extends Controller
         $data['site_title'] = '秀站分类目录|中文分类目录|网站分类目录|免费网站目录|dmoz目录-北京儒尚科技有限公司';
         $data['site_keywords'] = 'DMOZ目录,DMOZ分类目录,网站收录,网站目录,网站登录,中文网站目录,秀站分类目录,分类目录,秀站分类目录分享网站价值,秀站,秀站目录,免费网站目录';
         $data['site_description'] = '秀站分类目录免费收录各类优秀中文网站，提供网站分类目录检索，关键字搜索，提供网站即可免费快速提升网站流量，分享网站价值也是中国dmoz的标志';
-        $data['articles'] = Article::where(['art_status'=>'3'])->orderBy('updated_at','desc')->take('5')->get();
-        $data['websites'] = Website::where(['web_status'=>'3'])->orderBy('web_isbest','desc')->orderBy('updated_at','desc')->take('5')->get();
-        $data['hotsites'] = Website::where(['web_status'=>'3'])->orderBy('updated_at','desc')->take('5')->get();
+        $data['articles']   = Article::where(['art_status'=>'3','art_isbest'=>'1'])->orderBy('updated_at','desc')->take('16')->get();
+        $data['websites']   = Website::where(['web_status'=>'3'])->orderBy('web_isbest','desc')->orderBy('updated_at','desc')->take('5')->get();
+        $data['hotsites']   = Website::where(['web_status'=>'3'])->orderBy('updated_at','desc')->take('5')->get();
+        $data['bestsites']  = Website::where(['web_isbest'=>'1'])->orderBy('updated_at','desc')->take('10')->get();
+        $data['newsites']   = Website::orderBy('created_at','desc')->take('8')->get();
+        $data['randsites']  = Website::where(['web_status'=>'3'])->orderBy('created_at','desc')->skip(rand(1,50))->take('18')->get();
+        $data['viewsites']  = Website::orderBy('web_views','desc')->take('8')->get();
+        $data['web_status'] = Website::where(['web_status'=>'2'])->orderBy('updated_at','desc')->take('8')->get();
         $data['links'] = Link::where(['link_hide'=>'1'])->orderBy('link_order','asc')->get();
         $data['lables'] = Lable::where(['cate_mod'=>'webdir'])->orderBy('lab_views','desc')->take('30')->get();
-        $data['cates'] = $this->cates();
         $data['pages'] = Page::get();
-        $data['success'] = 'xiumei';
         $data['site_nav'] = 'index';
-        $success = false;//$this->xiumeiProxy($request);
-        if($success){
-            $data['success'] = $success;
-        }
         return view('web/index',$data);
     }
     /**

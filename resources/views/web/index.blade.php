@@ -1,74 +1,188 @@
 @extends('layouts.web')
 
 @section('content')
-  
-  <div class="am-g am-g-fixed index">
-    @if($success !='xiumei')
-    <div class="am-u-sm-12">
-      <h1><div class="am-alert am-alert-danger" data-am-alert>{{ $success }}</div></h1>
-    </div>
-    @endif
-
-    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6 box">
-      <h1 class="green am-text-center">热点头条</h1>
-      <ul class="am-list">
-        @foreach ($articles as $str)
-          <li>
-            <a class="am-text-center am-text-truncate" target="_blank" href="{{ url('/artinfo-'.$str->art_id.'.html') }}" title="{{ $str->art_title }}">
-              {{ $str->art_title }}
-            </a>
-          </li>
-        @endforeach
-      </ul>
-    </div>
-
-    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6 box">
-      <h1 class="pink am-text-center">活跃网站</h1>
-      <ul class="am-list">
-        @foreach ($hotsites as $str)
-          <li>
-            <a class="am-text-center am-text-truncate" target="_blank" href="{{ url('/siteinfo-'.$str->web_id.'.html') }}" title="{{ $str->web_name }}">
-              {{ $str->web_name }}
-            </a>
-          </li>
-        @endforeach
-      </ul>
-    </div>
-
-    <div class="am-u-sm-12 box">
-      <h1 class="green am-text-center">秀导航</h1>
-      @foreach ($cates as $str)
-        <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
-          <h2 class="am-titlebar-title ">
-              {{ $str['cate_name'] }}
-          </h2>
-          <nav class="am-titlebar-nav">
-              <a title="{{ $str['cate_name'] }}更多" href="{{ url('/webdir/'.$str['cate_id']) }}" target="_blank" class="">更多 &raquo;</a>
-          </nav>
-        </div>
-        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-3 am-avg-lg-6 am-gallery-bordered" data-am-gallery="{  }" >
-          @foreach ($str['site_array'] as $str_array)
-              <li>
-                <div class="am-gallery-item">
-                    <a title="{{ $str_array->web_name }}" target="_blank" href="{{ url('/siteinfo-'.$str_array->web_id.'.html') }}">
-                      <img class="lazy" data-original="http://api.webthumbnail.org/?width=480&height=330&screen=1280&url={{ $str_array->web_url }}" src="{{ url('images/lazy_loading.jpg') }}"  alt="{{ $str_array->web_name }}"/>
-                        <h3 class="am-gallery-title">{{ $str_array->web_name }}</h3>
-                        <div class="am-gallery-desc">{{ $str_array->web_views}}</div>
-                    </a>
+<div class="am-g am-g-fixed index">
+    <div class="am-u-md-8 am-u-end color-margin-bottom">
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title am-text-danger"> <i class="am-icon-thumbs-up"></i> 推荐网站 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
                 </div>
-              </li>
-          @endforeach
-        </ul>
-      @endforeach
+            </div>
+            <div class="color-card-body">
+                <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-5 am-gallery-bordered" data-am-gallery="{  }" >
+                    @foreach($bestsites as $v)
+                        <li>
+                            <div class="am-gallery-item">
+                                <a title="{{ $v->web_name }}" target="_blank" href="{{ url("siteinfo-$v->web_id.html") }}">
+                                    <img class="lazy" data-original="http://api.webthumbnail.org/?width=480&height=330&screen=1280&url={{ $v->web_url }}" src="{{ url('images/lazy_loading.jpg') }}"  alt="{{ $v->web_name }}"/>
+                                    <h3 class="am-gallery-title am-text-center">{{ $v->web_name }}</h3>
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </div>
+        </div>
+        <br/>
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title am-text-primary"> <i class="am-icon-thumbs-up"></i> 推荐资讯 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-thumbnails">
+                    @foreach ($articles as $v)
+                        <li class="am-text-success am-text-truncate">
+                            <a href="{{ url("artinfo-$v->art_id.html") }}" target="_blank" title="{{ $v->art_title }}">{{ $v->art_title }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title am-text-warning"> <i class="am-icon-spinner"></i> 等待审核 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-thumbnails">
+                    @foreach ($web_status as $v)
+                        <li class="am-text-success am-text-truncate">
+                            <a href="{{ url("siteinfo-$v->web_id.html") }}" target="_blank" title="{{ $v->web_name }}">{{ $v->web_name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title am-text-secondary"> <i class="am-icon-random"></i> 随机网站 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-thumbnails">
+                    @foreach ($randsites as $v)
+                        <li class="am-text-success am-text-truncate">
+                            <a href="{{ url("siteinfo-$v->web_id.html") }}" target="_blank" title="{{ $v->web_name }}">{{ $v->web_name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="am-u-sm-12 box">
-      <h1 class="pink am-text-center">友情链接</h1>
-      <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-6">
-        @foreach ($links as $str)
-        <li><a href="{{ $str->link_url }}" target="_blank" title="{{ $str->link_name }}">{{ $str->link_name }}</a></li>
-        @endforeach
-      </ul>
+    <div class="am-u-md-4 am-u-end color-margin-bottom">
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title"> <i class="am-icon-hacker-news"></i> 最新点入 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                            @foreach($newsites as $v)
+                                <li class="am-g am-list-item-dated">
+                                    <a title="{{ $v->web_name }}" target="_blank" href="{{ url("siteinfo-$v->web_id.html") }}" class="am-list-item-hd ">{{ $v->web_name }}</a>
+                                    <span class="am-list-date">{{ $v->created_at->toDateString() }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title"> <i class="am-icon-eye"></i> 人气网站 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                            @foreach($viewsites as $v)
+                                <li class="am-g am-list-item-dated">
+                                    <a title="{{ $v->web_name }}" target="_blank" href="{{ url("siteinfo-$v->web_id.html") }}" class="am-list-item-hd ">{{ $v->web_name }}</a>
+                                    <span class="am-list-date">{{ $v->created_at->toDateString() }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="am-u-sm-12 am-u-end color-margin-bottom">
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title"> <i class="am-icon-at"></i> 友情链接 </div>
+            </div>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-thumbnails">
+                    @foreach ($links as $v)
+                        <li class="am-text-success">
+                            <a href="{{ $v->link_url }}" target="_blank" title="{{ $v->link_name }}">{{ $v->link_name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

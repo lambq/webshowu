@@ -2,6 +2,22 @@
 
 @section('content')
 <div class="am-g am-g-fixed article">
+    <div class="color-breadcrumb">
+        <span>
+            <a class="color-breadcrumb-link" href="{{ url('/') }}">
+                <i type="home" class="am-icon-home"></i>
+            </a>
+            <span class="color-breadcrumb-separator">/</span>
+        </span>
+        <span>
+            <a class="color-breadcrumb-link" href="{{ url('/article') }}">
+                <i type="user" class="am-icon-file"></i>
+                <span>秀资讯</span>
+            </a>
+            <span class="color-breadcrumb-separator">/</span>
+        </span>
+    </div>
+    <br/>
   @foreach ($cates as $str)
     <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
       <h2 class="am-titlebar-title ">

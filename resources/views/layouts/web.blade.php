@@ -48,6 +48,9 @@
                     <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="秀站登录" href="{{ url('/login') }}" target="_blank">
                         登录
                     </a>
+                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="秀站注册" href="{{ url('/register') }}" target="_blank">
+                        注册
+                    </a>
                 @else
                     <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="安全退出" href="{{ url('/logout') }}" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
@@ -111,7 +114,9 @@
 <script src="{{ url('js/jquery.min.js') }}"></script>
 <!--<![endif]-->
 <script src="{{ url('js/amazeui.min.js') }}"></script>
+<script src="{{ url('js/color.min.js') }}"></script>
 <script src="{{ url('js/amazeui.lazyload.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url('css/color.min.css') }}">
 <script>
   $(function() {
     $("img.lazy").lazyload({ effect : 'fadeIn'});

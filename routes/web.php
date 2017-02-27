@@ -83,6 +83,10 @@ Route::group(['domain' => env('APP_URL')],function (){
         $sitemap->store('xml', 'sitemap');
         // this will generate file mysitemap.xml to your public folder
     });
+    //项目测试工程
+    Route::group(['namespace' => 'Ceshi','as' => 'Web'],function($router){
+        $router->get('/ceshi/makedown', 'MakedownController@index');
+    });
 });
 //后台
 Route::group(['domain' => env('APP_ADMIN'),'namespace' => 'Admin','as' => 'Admin'],function ($router){

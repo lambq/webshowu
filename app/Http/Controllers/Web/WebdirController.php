@@ -61,6 +61,7 @@ class WebdirController extends Controller
             $data['site_keywords'] = '秀目录,网站目录,免费网站目录,分类目录,网站分类目录';
             $data['site_description'] = '秀目录网站目录是全人工编辑的开放式网站分类目录，收录国内外、各行业优秀网站，免费网站目录,网站分类目录, 网站提交入口。旨在为用户提供优秀网站目录检索、网站推广服务。';
         }
+        $data['newsites']   = Website::orderBy('created_at','desc')->take('8')->get();
         $data['pages'] = Page::get();
         $data['art_list'] = $this->art_list;
         $data['site_list'] = $this->site_list;
@@ -83,6 +84,8 @@ class WebdirController extends Controller
             $data['art_list'] = $this->art_list;
             $data['site_list'] = $this->site_list;
             $data['webtags'] = explode(',',$websites->web_tags);
+
+            $data['newsites']   = Website::orderBy('created_at','desc')->take('8')->get();
             $data['pages'] = Page::get();
             $data['site_nav'] = 'webdir';
             $webarray['web_views'] = $websites->web_views+1;

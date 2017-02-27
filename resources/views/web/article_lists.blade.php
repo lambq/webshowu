@@ -1,38 +1,58 @@
 @extends('layouts.web')
 
 @section('content')
-<div class="am-g am-g-fixed article">
-  <div class="am-u-sm-12 am-u-md-8 am-u-lg-8"> 
-    <h1>{{$site_title}}</h1>
-    <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
-    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1 am-avg-md-1 am-avg-lg-1 am-gallery-bordered" data-am-gallery="{  }" >
-      @foreach ($articles as $str)
-      <li>
-        <div class="am-gallery-item team-box art_box">
-            <div class="am-u-sm-3 am-u-md-3 am-u-lg-3 team-tx">
-              <a href="{{ url('/artinfo-'.$str->art_id.'.html') }}">
-                <img class="index_img" src="{{ $str->art_thumbnail }}">
-              </a>
+<div class="am-g am-g-fixed">
+    <div class="am-u-sm-12 am-u-md-8 am-u-lg-8 am-u-end color-margin-bottom">
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
+                <div class="color-card-head-title am-text-danger"> <i class="am-icon-github"></i> {{ $site_title }} </div>
             </div>
-            <div class="am-u-sm-9 am-u-md-9 am-u-lg-9 team-js">
-              <a href="{{ url('/artinfo-'.$str->art_id.'.html') }}" title="{{ $str->art_title }}">
-                <h5 class="am-text-truncate">{{ $str->art_title }}</h5>
-              </a>
-              <p>
-                @foreach (explode(',', $str->art_tags) as $str_tags)
-                <a target="_blank" title="{{$str_tags}}" href="http://zhannei.baidu.com/cse/search?q={{$str_tags}}&s=5924146839921945097">{{ str_limit($str_tags,10,'') }}</a>
-                @endforeach
-              </p>  
-              <span class="am-fr">
-                <em class="am-icon-clock-o">{{$str->updated_at->toDateString()}}</em>
-              </span>
+            <div class="color-card-extra">
+                <div class="tool">
+                    <a href="javascript:;" class="collapse active"> </a>
+                    <a href="javascript:;" class="config"> </a>
+                    <a href="javascript:;" class="reload"> </a>
+                    <a href="javascript:;" class="remove"> </a>
+                </div>
+            </div>
+            <div class="color-card-body">
+                <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+                    <div class="am-list-news-bd">
+                        <ul class="am-list">
+                            <!--缩略图在标题左边-->
+                            @foreach ($articles as $v)
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                                    <div class="am-u-sm-4 am-list-thumb">
+                                        <a href="{{ url('/artinfo-'.$v->art_id.'.html') }}" title="{{ $v->art_title }}" target="_blank">
+                                            <img class="lazy" width="168" height="113" data-original="{{ $v->art_thumbnail }}" src="{{ url('images/lazy_loading.jpg') }}" alt="{{ $v->art_title }}"/>
+                                        </a>
+                                    </div>
+                                    <div class=" am-u-sm-8 am-list-main">
+                                        <h3 class="am-list-item-hd">
+                                            <a href="{{ url('/artinfo-'.$v->art_id.'.html') }}" title="{{ $v->art_title }}" target="_blank">
+                                                {{ $v->art_title }}
+                                            </a>
+                                        </h3>
+                                        <div class="am-list-item-text">
+                                            @foreach (explode(',', $v->art_tags) as $vv)
+                                                <a class="am-btn am-btn-default am-radius" href="http://zhannei.baidu.com/cse/search?q={{ $vv }}&s=5924146839921945097" title="{{ $vv }}" target="_blank">
+                                                    {{ str_limit( $vv ,10,'') }}
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                        <div class="am-list-item-text am-text-right">
+                                            <em class="am-icon-clock-o">{{ $v->updated_at->toDateString() }}</em>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                {!! $articles->links() !!}
             </div>
         </div>
-      </li>
-      @endforeach
-    </ul>
-    {!! $articles->links() !!}
-  </div>
-  @include('web.right_list')
+    </div>
+    @include('web.right_list')
 </div>
 @endsection
