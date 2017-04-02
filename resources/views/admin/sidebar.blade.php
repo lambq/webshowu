@@ -6,8 +6,9 @@
 			<li><a href="{{ url('/') }}"><span class="am-icon-male"></span> 主页</a></li>
 			<li><a href="{{ url('/menu') }}"><span class="am-icon-bars"></span> 秀菜单管理</a></li>
 			<li><a href="{{ url('/link') }}"><span class="am-icon-table"></span> 秀友链管理</a></li>
-			<li><a href="{{ url('/webdir') }}"><span class="am-icon-table"></span> 秀目录管理</a></li>
-			<li><a href="#"><span class="am-icon-pencil-square-o"></span> 秀资讯码管理</a></li>
+			<li><a href="{{ url('/webdir/0') }}"><span class="am-icon-table"></span> 秀目录管理</a></li>
+			<li><a href="{{ url('/article/0') }}"><span class="am-icon-table"></span> 秀资讯码管理</a></li>
+			<li><a href="{{ url('/pages') }}"><span class="am-icon-table"></span> 帮助文档管理</a></li>
 		</ul>
 	</div>
 </div>

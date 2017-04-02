@@ -1,19 +1,14 @@
 @extends('layouts.web')
 
 @section('content')
-<div class="am-g am-g-fixed index">
+<div class="am-g am-g-fixed">
     <div class="am-u-md-8 am-u-end color-margin-bottom">
         <div class="color-card color-card-bordered color-card-color">
             <div class="color-card-head">
                 <div class="color-card-head-title am-text-danger"> <i class="am-icon-thumbs-up"></i> 推荐网站 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-5 am-gallery-bordered" data-am-gallery="{  }" >
@@ -21,7 +16,7 @@
                         <li>
                             <div class="am-gallery-item">
                                 <a title="{{ $v->web_name }}" target="_blank" href="{{ url("siteinfo-$v->web_id.html") }}">
-                                    <img class="lazy" data-original="http://api.webthumbnail.org/?width=480&height=330&screen=1280&url={{ $v->web_url }}" src="{{ url('images/lazy_loading.jpg') }}"  alt="{{ $v->web_name }}"/>
+                                    <img class="lazy" data-original="{{ env('APP_IMG').'/website/'.$v->web_url }}.png" src="{{ url('images/lazy_loading.jpg') }}"  alt="{{ $v->web_name }}"/>
                                     <h3 class="am-gallery-title am-text-center">{{ $v->web_name }}</h3>
                                 </a>
                             </div>
@@ -37,12 +32,7 @@
                 <div class="color-card-head-title am-text-primary"> <i class="am-icon-thumbs-up"></i> 推荐资讯 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-thumbnails">
@@ -57,15 +47,28 @@
         <br/>
         <div class="color-card color-card-bordered color-card-color">
             <div class="color-card-head">
+                <div class="color-card-head-title am-text-primary"> <i class="am-icon-thumbs-up"></i> 网站综合查询 </div>
+            </div>
+            <div class="color-card-extra">
+
+            </div>
+            <div class="color-card-body">
+                <ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-thumbnails">
+                    @foreach ($hotsites as $v)
+                        <li class="am-text-success am-text-truncate">
+                            <a href='{{ url("/seo/$v->web_url") }}' target="_blank" title="{{ $v->web_url }}">{{ $v->web_url }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <div class="color-card color-card-bordered color-card-color">
+            <div class="color-card-head">
                 <div class="color-card-head-title am-text-warning"> <i class="am-icon-spinner"></i> 等待审核 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-thumbnails">
@@ -83,12 +86,7 @@
                 <div class="color-card-head-title am-text-secondary"> <i class="am-icon-random"></i> 随机网站 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-thumbnails">
@@ -108,12 +106,7 @@
                 <div class="color-card-head-title"> <i class="am-icon-hacker-news"></i> 最新点入 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
@@ -136,12 +129,7 @@
                 <div class="color-card-head-title"> <i class="am-icon-eye"></i> 人气网站 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
@@ -166,12 +154,7 @@
                 <div class="color-card-head-title"> <i class="am-icon-at"></i> 友情链接 </div>
             </div>
             <div class="color-card-extra">
-                <div class="tool">
-                    <a href="javascript:;" class="collapse active"> </a>
-                    <a href="javascript:;" class="config"> </a>
-                    <a href="javascript:;" class="reload"> </a>
-                    <a href="javascript:;" class="remove"> </a>
-                </div>
+
             </div>
             <div class="color-card-body">
                 <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-thumbnails">

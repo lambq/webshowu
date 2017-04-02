@@ -3,7 +3,7 @@
 @section('content')
     <div class="header">
         <div class="am-g">
-            <h1>E转诊新后台——管理平台</h1>
+            <h1>秀站分类目录——管理平台</h1>
         </div>
         <hr/>
     </div>

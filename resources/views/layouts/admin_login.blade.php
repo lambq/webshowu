@@ -8,7 +8,7 @@
     <meta name="Keywords" content="秀登陆" />
     <meta name="Description" content="秀登陆" />
     <meta property="qc:admins" content="451134620767523077563757" />
-    <title>e转诊——管理平台</title>
+    <title>秀站分类目录——管理平台</title>
     {{--<link rel="icon" type="image/png" href="{{ url('favicon.png') }}">--}}
     <link rel="stylesheet" href="{{ url('css/amazeui.min.css') }}">
     <link rel="stylesheet" href="{{ url('css/app01.css') }}">

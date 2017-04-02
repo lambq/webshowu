@@ -90,6 +90,28 @@
 							<input type="text" name="web_arank" id="doc-web_arank" placeholder="请输入AlexaRank" value="{{$web->web_arank}}">
 						</div>
 
+						<div class="am-form-group">
+							<label for="doc-select-1">网站状态</label>
+							<select id="doc-select-1" name="web_status">
+								<option value="1" @if(old('web_status', $web->web_status) == 1) selected @endif>黑名单</option>
+								<option value="2" @if(old('web_status', $web->web_status) == 2) selected @endif>待审核</option>
+								<option value="3" @if(old('web_status', $web->web_status) == 3) selected @endif>已审核</option>
+							</select>
+							<span class="am-form-caret"></span>
+						</div>
+
+						<div class="am-form-group">
+							<label class="am-checkbox-inline">
+								<input type="checkbox" name="web_ispay" value="1" @if(old('web_ispay', $web->web_ispay) ==1) checked="checked" @endif> 是否支付
+							</label>
+							<label class="am-checkbox-inline">
+								<input type="checkbox" name="web_istop" value="1" @if(old('web_istop', $web->web_istop) == 1) checked="checked" @endif> 是否置顶
+							</label>
+							<label class="am-checkbox-inline">
+								<input type="checkbox" name="web_isbest" value="1" @if(old('web_isbest', $web->web_isbest) == 1) checked="checked" @endif> 是否推荐
+							</label>
+						</div>
+
 						<p><button type="submit" class="am-btn am-btn-default">提交</button></p>
 					</fieldset>
 				</form>

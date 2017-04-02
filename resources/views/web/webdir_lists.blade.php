@@ -24,7 +24,7 @@
               <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
                 <div class="am-u-sm-4 am-list-thumb">
                   <a href="{{ url('/siteinfo-'.$v->web_id.'.html') }}" title="{{ $v->web_name }}" target="_blank">
-                    <img class="lazy" data-original="http://api.webthumbnail.org/?width=480&height=330&screen=1280&url={{ $v->web_url }}" src="{{ url('images/lazy_loading.jpg') }}" src=""  alt="{{ $v->web_name }}"/>
+                    <img class="lazy" data-original="{{ env('APP_IMG').'/website/'.$v->web_url }}.png" src="{{ url('images/lazy_loading.jpg') }}" src=""  alt="{{ $v->web_name }}"/>
                   </a>
                 </div>
                 <div class=" am-u-sm-8 am-list-main">

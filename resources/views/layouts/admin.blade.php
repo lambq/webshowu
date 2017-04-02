@@ -13,7 +13,6 @@
   <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="{{ url('css/amazeui.min.css') }}"/>
-  <link rel="stylesheet" href="{{ url('css/amazeui.tree.min.css') }}"/>
   <link rel="stylesheet" href="{{ url('css/admin.css') }}">
 </head>
 <body>
@@ -55,7 +54,6 @@
 <script src="{{ url('js/jquery.min.js') }}"></script>
 <!--<![endif]-->
 <script src="{{ url('js/amazeui.min.js') }}"></script>
-<script src="{{ url('js/amazeui.tree.min.js') }}"></script>
 <script src="{{ url('js/app.js') }}"></script>
 </body>
 </html>

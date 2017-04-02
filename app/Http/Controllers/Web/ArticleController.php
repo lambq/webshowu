@@ -6,6 +6,7 @@ use App\Models\Categorie;
 use App\Models\Page;
 use App\Models\Article;
 use App\Models\Website;
+use Parsedown;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -72,25 +73,28 @@ class ArticleController extends Controller
      */
     function info(Request $request)
     {
-        $articles = Article::where('art_id',$request->id)->where('art_status','3')->first();
-        if($articles){
-            $data['articles'] = $articles;
+        $Parsedown = new Parsedown();
+        $article = Article::where('art_id',$request->id)->where('art_status','3')->first();
+        if($article){
+            $data['articles'] = $article;
 
-            $data['site_title'] = $articles->art_title.' - 秀站分类目录分享网站价值';
-            $data['site_keywords'] = $articles->art_title.','.$articles->art_tags;
-            $data['site_description'] = $articles->art_title.','.$articles->art_intro;
+            $data['site_title'] = $article->art_title.' - 秀资讯 - 儒尚秀站网';
+            $data['site_keywords'] = $article->art_title.','.$article->art_tags;
+            $data['site_description'] = $article->art_title.','.$article->art_intro;
 
             $data['art_list'] = $this->art_list;
             $data['site_list'] = $this->site_list;
 
-            $data['prev'] = $this->getPrevArticleId($request->id,$articles->cate_id);
-            $data['next'] = $this->getNextArticleId($request->id,$articles->cate_id);
-            $data['arttags'] = explode(',',$articles->art_tags);
+            $data['prev'] = $this->getPrevArticleId($request->id, $article->cate_id);
+            $data['next'] = $this->getNextArticleId($request->id, $article->cate_id);
+            $data['arttags'] = explode(',', $article->art_tags);
 
             $data['newsites']   = Website::orderBy('created_at','desc')->take('8')->get();
+            $data['parsedown']  = $Parsedown->text( $article->art_content );
+
             $data['pages'] = Page::get();
             $data['site_nav'] = 'article';
-            $art_data['art_views'] = $articles->art_views+1;
+            $art_data['art_views'] = $article->art_views+1;
             Article::where('art_id', $request->id)->update($art_data);
             return view('web.article_info',$data);
         }else{

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Keywords" content="{{ $site_keywords }}" />
     <meta name="Description" content="{{ $site_description }}" />
-    <meta property="qc:admins" content="451134620767523077563757" />
     <title>{{ $site_title }}</title>
     <link rel="icon" type="image/png" href="{{ url('favicon.png') }}">
     <link rel="stylesheet" href="{{ url('css/amazeui.min.css') }}">
@@ -15,59 +14,65 @@
 </head>
 <body>
 <!-- header -->
-<header class="am-topbar">
+<header class="am-topbar am-topbar-fixed-top">
     <div class="am-container">
         <h1 class="am-topbar-brand">
-      <a href="{{ url('/') }}">秀站分类目录</a>
-    </h1>
-
-        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}">
-          <span class="am-sr-only">导航切换</span>
-          <span class="am-icon-bars"></span>
+            <a href="{{ url('/') }}" title="儒尚秀站网">儒尚秀站网</a>
+        </h1>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only" data-am-collapse="{target: '#collapse-head'}">
+            <span class="am-sr-only">导航切换</span>
+            <span class="am-icon-bars"></span>
         </button>
-
-        <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <div class="am-collapse am-topbar-collapse" id="collapse-head">
             <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li @if($site_nav == 'index') class="am-active" @endif><a href="{{ url('/') }}">首页</a></li>
-                {{--<li @if($site_nav == 'qrcode') class="am-active" @endif><a title="秀二维码" href="{{ url('/qrcode') }}">秀二维码</a></li>--}}
+                <li @if($site_nav == 'index') class="am-active" @endif><a title="首页" href="{{ url('/') }}">首页</a></li>
                 <li @if($site_nav == 'webdir') class="am-active" @endif><a title="秀目录" href="{{ url('/webdir') }}">秀目录</a></li>
                 <li @if($site_nav == 'article') class="am-active" @endif><a title="秀资讯" href="{{ url('/article') }}">秀资讯</a></li>
-                <!-- <li><a target="_blank" title="秀文档" href="http://doc.webshowu.com">秀文档</a></li> -->
+                <li @if($site_nav == 'seo') class="am-active" @endif><a title="网站综合查询" href="{{ url('/seo') }}">网站综合查询</a></li>
             </ul>
-
             <form class="am-topbar-form am-topbar-left am-form-inline" target="_blank" role="search" action="http://zhannei.baidu.com/cse/search" method="GET">
                 <div class="am-form-group">
                     <input type="text" name="q" class="am-form-field am-input-sm" placeholder="搜索">
                     <input type="hidden" name="s" value="5924146839921945097"/>
                 </div>
             </form>
-
-
-            <div class="am-topbar-right">
-                @if (Auth::guest())
-                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="秀站登录" href="{{ url('/login') }}" target="_blank">
-                        登录
-                    </a>
-                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="秀站注册" href="{{ url('/register') }}" target="_blank">
-                        注册
-                    </a>
-                @else
-                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="安全退出" href="{{ url('/logout') }}" onclick="event.preventDefault();
+            @if (Auth::guest())
+                <div class="am-topbar-right">
+                    <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" onclick="event.preventDefault();
+              document.getElementById('register-form').submit();">
+                        <span class="am-icon-pencil"></span> 注册
+                    </button>
+                    <form id="register-form" action="{{ url('/register') }}" method="get" style="display: none;"></form>
+                </div>
+                <div class="am-topbar-right">
+                    <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" onclick="event.preventDefault();
+              document.getElementById('login-form').submit();">
+                        <span class="am-icon-user"></span> 登录
+                    </button>
+                    <form id="login-form" action="{{ url('/login') }}" method="get" style="display: none;"></form>
+                </div>
+            @else
+                <div class="am-topbar-right">
+                    <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" onclick="event.preventDefault();
+          document.getElementById('home-form').submit();">
+                        <span class="am-icon-user"></span> 个人中心
+                    </button>
+                    <form id="home-form" action="{{ url('/home') }}" method="get" style="display: none;"></form>
+                </div>
+                <div class="am-topbar-right">
+                    <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
-                        安全退出
-                    </a>
-                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        <span class="am-icon-user"></span> 安全退出
+                    </button>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="post" style="display: none;">
                         {{ csrf_field() }}
                     </form>
-                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" title="个人中心" href="{{ url('/home') }}" target="_blank">
-                        个人中心
-                    </a>
-                @endif
-            </div>
-    </div>
+                </div>
+            @endif
+        </div>
     </div>
 </header>
-
+<br/>
 <!-- content -->
 @yield('content')
 
@@ -85,23 +90,23 @@
     @foreach ($pages as $str)
     <a target="_blank" title="{{ $str->page_name }}" href="{{ url('/diypage-'.$str->page_id.'.html') }}">{{ $str->page_name }}</a> | 
     @endforeach
-    <!-- <a target="_blank" title="站点地图" href="{{ url('/sitemap') }}">站点地图</a> -->
+    <a target="_blank" title="SEO综合查询接口文档" href="http://www.webshowu.com/wiki_seo.html">SEO综合查询接口文档</a>
   </p>
   <p class="am-text-center">
-    <a href="http://www.webshowu.com/">秀站分类目录</a>&nbsp;&nbsp;
+    <a href="http://www.webshowu.com/" title="儒尚秀站网">儒尚秀站网</a>&nbsp;&nbsp;
     北京儒尚科技有限公司【<a rel="nofollow" href="http://www.miibeian.gov.cn">京ICP备14053701号-4</a>】&nbsp;&nbsp;
-    QQ群：55725231&nbsp;&nbsp;
-    <script src="http://s95.cnzz.com/z_stat.php?id=1257630163&web_id=1257630163" language="JavaScript"></script>
+    QQ群：174353270&nbsp;&nbsp;
+      <script>
+          var _hmt = _hmt || [];
+          (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?52714deb03d391b28b6967ebcc3f643e";
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(hm, s);
+          })();
+      </script>
   </p>
-	<p class="am-text-center">
-		源代码下载
-	</p>
-	<p class="am-text-center">
-		<a target="_blank" href="https://github.com/lambq/webshowu" title="github项目源代码" class="am-icon-btn am-secondary am-icon-git-square"></a>
-	</p>
 </footer>
-
-
 
 <!-- JavaScripts -->
 <!--[if lt IE 9]>
@@ -133,25 +138,12 @@ s.parentNode.insertBefore(bp, s);
 </script>
 
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?73d6f22b97da2e1d37ee429edbecaf61";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<script>
 (function(){
    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?3bb1e90adc41890b9e10aaf78d8e5811":"https://jspassport.ssl.qhimg.com/11.0.1.js?3bb1e90adc41890b9e10aaf78d8e5811";
    document.write('<script src="' + src + '" id="sozz"><\/script>');
 })();
 </script>
 
-{{--@if(isMobile())--}}
-{{--@else--}}
-{{--<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"right","bdTop":"100"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>--}}
-{{--@endif--}}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"0","bdPos":"right","bdTop":"120.5"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"24"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>

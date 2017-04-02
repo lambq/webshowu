@@ -19,7 +19,7 @@
     <p class="am-article-lead">{{$articles->art_intro}}</p>
 
     <article data-am-widget="paragraph" class="am-paragraph am-paragraph-default" data-am-paragraph="{ tableScrollable: true, pureview: true }">
-      {!! $articles->art_content !!}
+      {!! $parsedown !!}
     </article>
 
     <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
@@ -30,9 +30,6 @@
       <p>下一篇：@if ($next)<a href="{{ url('/artinfo-'.$next->art_id.'.html') }}">{{$next->art_title}}</a> @else 没有了 @endif</p>
     </div>
 
-    <!-- 多说评论框 start --> 
-    <div class="ds-thread" data-thread-key="{{$articles->art_id}}" data-title="{{$articles->art_title}}" data-url='{{ url("/artinfo-$articles->art_id") }}.html'></div> <!-- 多说评论框 end --> <!-- 多说公共JS代码 start (一个网页只需插入一次) --> <script type="text/javascript"> var duoshuoQuery = {short_name:"wwwwebshowu"}; (function() { var ds = document.createElement('script'); ds.type = 'text/javascript';ds.async = true; ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js'; ds.charset = 'UTF-8'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds); })(); </script> 
-    <!-- 多说公共JS代码 end --> 
   </div>
   @include('web.right_list')
 </div>

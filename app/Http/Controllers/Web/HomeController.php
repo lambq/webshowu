@@ -30,11 +30,17 @@ class HomeController extends Controller
      */
     public function home(Request $request)
     {
-        if($request->edit_id){
-            $art_data['name'] = $request->name;
-            $art_data['user_qq'] = $request->user_qq;
-            User::where('user_id', $request->user()->id )->update($art_data);
-            return redirect::to('profile')->with('success','个人资料修改成功！');
+        if($request->action == 'user_info'){
+            User::where('id', $request->user()->id )->update([
+                'name'      => $request->name,
+            ]);
+            return redirect::to('home')->with('success','个人项目修改成功！');
+        }
+        if($request->action == 'api_token'){
+            User::where('id', $request->user()->id )->update([
+                'api_token' => str_random(60),
+            ]);
+            return redirect::to('home')->with('success','申请api_token成功！');
         }
         $data['pagename'] = '个人信息 - 会员中心';
         $data['site_title'] = '个人信息 - 会员中心 - 秀站分类目录分享网站价值';
@@ -211,14 +217,14 @@ class HomeController extends Controller
             return redirect::back()->withErrors('请输入网站简介！');
         }
 
-        $web_ip = sprintf("%u", ip2long($request->getClientIp()));
+        $web_ip = sprintf("%u", ip2long($request->web_ip));
 
         $web_site['cate_id'] = $request->cate_id;
         $web_site['web_name'] = $request->web_name;
         $web_site['web_url'] = $request->web_url;
         $web_site['web_tags'] = $request->web_tags;
         $web_site['web_intro'] = $request->web_intro;
-        $web_site['web_ip'] = $request->web_ip;
+        $web_site['web_ip']     = $web_ip;
         $web_site['web_grank'] = $request->web_grank;
         $web_site['web_brank'] = $request->web_brank;
         $web_site['web_srank'] = $request->web_srank;

@@ -20,7 +20,6 @@ class CreateWebsitesTable extends Migration
             $table->string('web_name','100')->comment('网站名称');
             $table->string('web_url','255')->comment('网站域名');
             $table->string('web_tags','255')->comment('TAG标签');
-            $table->string('web_pic','100')->comment('网站截图');
             $table->text('web_intro')->comment('网站简介');
             $table->tinyInteger('web_ispay')->unsigned()->comment('是否付费');
             $table->tinyInteger('web_istop')->unsigned()->comment('是否置顶');

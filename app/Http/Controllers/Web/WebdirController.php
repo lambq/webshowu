@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Jobs\QiniuImg;
 use App\Models\Categorie;
 use App\Models\Page;
 use App\Models\Article;
@@ -75,9 +76,13 @@ class WebdirController extends Controller
     {
         $websites = website::leftJoin('users', 'users.id','=','websites.user_id')->where('websites.web_status','=','3')->where('websites.web_id','=',$request->id)->select('websites.*')->first();
         if($websites){
+            dispatch(new QiniuImg([
+                'url'       => 'https://jietu.zzs1.com/?a='.$websites->web_url.'&w=480&h=330',
+                'filedir'   => 'website/'.$websites->web_url.'.png',
+            ]));
             $data['websites'] = $websites;
 
-            $data['site_title'] = $websites->web_name.$websites->web_url.' - 秀站分类目录分享网站价值';
+            $data['site_title'] = $websites->web_name.$websites->web_url.' - 秀目录 - 儒尚秀站网';
             $data['site_keywords'] = $websites->web_name.','.$websites->web_tags;
             $data['site_description'] = $websites->web_name.','.$websites->web_intro;
 

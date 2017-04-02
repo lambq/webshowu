@@ -60,17 +60,8 @@
           </div>
 
           <div class="am-form-group">
-            <label for="doc-web_intro">文章内容</label>
-            <!-- 加载编辑器的容器 -->
-            <script id="art_content" name="art_content" type="text/plain">
-            </script>
-            <!-- 实例化编辑器 -->
-            <script type="text/javascript">
-              var ue = UE.getEditor('art_content');
-                ue.ready(function() {
-                ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.    
-              });
-            </script>
+            <label for="doc-ta-1">文章内容</label>
+            <textarea class="" rows="5" id="doc-ta-1" placeholder="请输入文章内容，本文只支持markdown语法" name="art_content"></textarea>
           </div>
           
           <p><button type="submit" class="am-btn am-btn-default">提交</button></p>
