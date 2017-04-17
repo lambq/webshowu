@@ -235,6 +235,7 @@ class AdminController extends Controller
             $request->web_tags = str_replace(',,', ',', $request->web_tags);
             $request->web_tags = str_replace('、', ',', $request->web_tags);
             $request->web_tags = str_replace(' ', ',', $request->web_tags);
+            $request->web_tags = str_replace('-', ',', $request->web_tags);
             if (substr($request->web_tags, -1) == ',') {
                 $request->web_tags = substr($request->web_tags, 0, strlen($request->web_tags) - 1);
             }

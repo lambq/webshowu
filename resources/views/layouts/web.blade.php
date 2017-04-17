@@ -93,9 +93,7 @@
     <a target="_blank" title="SEO综合查询接口文档" href="http://www.webshowu.com/wiki_seo.html">SEO综合查询接口文档</a>
   </p>
   <p class="am-text-center">
-    <a href="http://www.webshowu.com/" title="儒尚秀站网">儒尚秀站网</a>&nbsp;&nbsp;
-    北京儒尚科技有限公司【<a rel="nofollow" href="http://www.miibeian.gov.cn">京ICP备14053701号-4</a>】&nbsp;&nbsp;
-    QQ群：174353270&nbsp;&nbsp;
+    版权归儒尚秀站网（webshowu） 所有 | 基于PHP技术构建 | 本站使用阿帕云服务器+七牛云
       <script>
           var _hmt = _hmt || [];
           (function() {

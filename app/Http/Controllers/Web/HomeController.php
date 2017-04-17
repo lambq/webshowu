@@ -42,6 +42,16 @@ class HomeController extends Controller
             ]);
             return redirect::to('home')->with('success','申请api_token成功！');
         }
+        if($request->action == 'api_url'){
+            if($this->file_get_contents_curl($request->api_url.'up.php?action=check&token='.$request->user()->api_token)[1] == 'ok'){
+                User::where('id', $request->user()->id )->update([
+                    'api_url' => $request->api_url,
+                ]);
+                return redirect::to('home')->with('success','绑定成功！');
+            }else{
+                return redirect::back()->withErrors('绑定失败！请联系我们!');
+            }
+        }
         $data['pagename'] = '个人信息 - 会员中心';
         $data['site_title'] = '个人信息 - 会员中心 - 秀站分类目录分享网站价值';
         $data['site_keywords'] = '个人信息 - 会员中心 - 秀站分类目录分享网站价值';
@@ -172,6 +182,7 @@ class HomeController extends Controller
     }
     /**
      * 站点编辑
+     *
      *
      * @return \Illuminate\Http\Response
      */

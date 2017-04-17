@@ -124,31 +124,12 @@ class SeoController extends Controller
         $array1 = [];
         foreach($array as $v) {
             if(strstr($v,':')){
-                $str    = explode(': ',$v);
-                $array1[$str['0']]  = $str['1'];
+                $str    = explode(':',$v);
+                $array1[$str['0']]  = trim($str['1']);
             }else{
                 $array1['host']  = $v;
             }
         }
         return $array1;
-    }
-
-    function file_get_contents_curl($url){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);//抓取网址
-        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (compatible; Baiduspider/3.0; +http://www.baidu.com/search/spider.html)");//伪造百度蜘蛛头部
-        $ip = '220.181.7.121';
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-FORWARDED-FOR:' . $ip, 'CLIENT-IP:' . $ip));//伪造百度蜘蛛IP
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//
-        curl_setopt($ch, CURLOPT_HEADER, true); //抓取服务器信息
-        curl_setopt($ch, CURLOPT_NOBODY, false); //抓取网页信息
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); //支持301跳转
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT, 30); //网页等待时间
-        $data = curl_exec($ch);
-        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == '200') {
-            $data = explode("\r\n\r\n", $data, 2);
-        }
-        curl_close($ch);
-        return $data;
     }
 }

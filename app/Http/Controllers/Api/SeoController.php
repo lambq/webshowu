@@ -45,10 +45,10 @@ class SeoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $domain
+     * @param  \Illuminate\Http\Request  $request int  $domain
      * @return \Illuminate\Http\Response
      */
-    public function show($domain)
+    public function show(Request $request,$domain)
     {
         //
         $url    = 'http://'.$domain;
@@ -81,6 +81,7 @@ class SeoController extends Controller
                     'updated_at'    => date("Y-m-d H:i:s",time()),
                 ]);
                 dispatch(new SeoSite([
+                    'user'          => $request->user(),
                     'site'          => $parts['host'],
                 ]));
                 $result = [
@@ -159,6 +160,7 @@ class SeoController extends Controller
             }
             $info = DB::table('websites')->where('web_id', $id)->first();
             dispatch(new SeoSite([
+                'user'          => $request->user(),
                 'site'          => $parts['host'],
             ]));
             $result = [

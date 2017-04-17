@@ -13,40 +13,47 @@
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
 </head>
 <body>
-    <div class="am-g">
-        <div class="am-u-sm-2">
-            <ul class="am-nav">
-                <li >
-                    <a href="{{ url('/') }}">返回首页</a>
-                </li>
-                <li class="am-btn @if($site_nav == 'index') am-active @else am-btn-default @endif">
-                    <a href="{{ url('/home') }}">个人信息</a>
-                </li>
-                <li class="am-btn @if($site_nav == '1') am-active @else am-btn-default @endif" >
-                    <a href="#">关联帐户</a>
-                </li>
-                <li class="am-btn @if($site_nav == 'Website') am-active @else am-btn-default @endif" >
-                    <a href="{{ url('/get_site') }}">我的站点</a>
-                </li>
-                <li class="am-btn @if($site_nav == 'Article') am-active @else am-btn-default @endif" >
-                    <a href="{{ url('/get_art') }}">我的投稿</a>
-                </li>
-                <li class="am-btn @if($site_nav == '1') am-active @else am-btn-default @endif" >
-                    <a href="{{ url('/logout') }}" onclick="event.preventDefault();
+    <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+        <div class="am-container">
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+                    data-am-collapse="{target: '#doc-topbar-collapse-4'}">
+                <span class="am-sr-only">导航切换</span>
+                <span class="am-icon-bars"></span>
+            </button>
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li >
+                        <a href="{{ url('/') }}">首页</a>
+                    </li>
+                    <li class="@if($site_nav == 'index') am-active @endif">
+                        <a href="{{ url('/home') }}">个人信息</a>
+                    </li>
+                    <li class="@if($site_nav == '1') am-active @endif" >
+                        <a href="#">关联帐户</a>
+                    </li>
+                    <li class="@if($site_nav == 'Website') am-active @endif" >
+                        <a href="{{ url('/get_site') }}">我的站点</a>
+                    </li>
+                    <li class="@if($site_nav == 'Article') am-active @endif" >
+                        <a href="{{ url('/get_art') }}">我的投稿</a>
+                    </li>
+                    <li class="@if($site_nav == '1') am-active @endif" >
+                        <a href="{{ url('/logout') }}" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
-                        安全退出
-                    </a>
-                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-            </ul>
+                            安全退出
+                        </a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="am-u-sm-10">
-            <!-- content -->
-            @yield('content')
-        </div>
-    </div>
+    </header>
+
+    <!-- content -->
+    @yield('content')
+
 <!-- JavaScripts -->
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
@@ -58,7 +65,9 @@
 <script src="{{ url('js/jquery.min.js') }}"></script>
 <!--<![endif]-->
 <script src="{{ url('js/amazeui.min.js') }}"></script>
+<script src="{{ url('js/color.min.js') }}"></script>
 <script src="{{ url('js/amazeui.lazyload.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url('css/color.min.css') }}">
 <script>
   $(function() {
     $("img.lazy").lazyload({ effect : 'fadeIn'});

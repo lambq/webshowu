@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Models\Categorie;
 use App\Models\Page;
 use App\Models\Link;
 use App\Models\Website;
@@ -61,23 +60,5 @@ class IndexController extends Controller
         }else{
             return redirect('/');
         }
-    }
-    /**
-     * 递归分类目录
-     *
-     * @return void
-     */
-    public function cates()
-    {
-        $array = array();
-        $cate = Categorie::where(['cate_isbest'=>'1'])->orderBy('cate_order','asc')->orderBy('cate_id','asc')->get();
-        foreach($cate as $str){
-            $cate_data['cate_name'] = $str->cate_name;
-            $cate_data['cate_id'] = $str->cate_id;
-            $collects = explode(",",$str->cate_arrchildid);
-            $cate_data['site_array'] = Website::leftJoin('users', 'users.id','=','websites.user_id')->where('websites.web_status','3')->where('websites.web_ispay','1')->whereIn('websites.cate_id',$collects)->orderBy('websites.updated_at','desc')->take('6')->get();
-            $array[] = $cate_data;
-        }
-        return $array;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Jobs\QiniuImg;
 use App\Models\Categorie;
+use App\Jobs\QiniuImg;
 use App\Models\Page;
 use App\Models\Article;
 use App\Models\Website;
@@ -99,20 +99,5 @@ class WebdirController extends Controller
         }else{
             return redirect('/');
         }
-    }
-    /**
-     * 递归分类目录
-     */
-    function cates()
-    {
-        $array = array();
-        $cate = Categorie::where('cate_mod','webdir')->where('root_id','0')->orderBy('cate_id','asc')->select('cate_name','cate_img','cate_dir','cate_id','cate_arrchildid')->get();
-        foreach($cate as $str){
-            $cate_data = $str;
-            $collects = explode(",",$str->cate_arrchildid);
-            $cate_data['site_array'] = Categorie::orderBy('cate_id','asc')->whereIn('cate_id',$collects)->get();
-            $array[] = $cate_data;
-        }
-        return $array;
     }
 }

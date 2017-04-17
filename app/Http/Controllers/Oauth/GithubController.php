@@ -49,7 +49,7 @@ class GithubController extends Controller
             User::where('email', $user->email )->update($userData);
         }
         $userInstance = User::where('github_id',$user->id)->firstOrFail();
-        Auth::login($userInstance);
+        auth()->login($userInstance);
 
         return redirect('/home');
         // $user->token;
