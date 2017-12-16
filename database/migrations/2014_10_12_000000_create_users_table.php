@@ -15,12 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->comment('用户呢称');
-            $table->string('email')->unique()->nullable()->comment('用户邮箱');
-            $table->string('avatar')->nullable()->comment('用户头像');
-            $table->string('password',60)->comment('用户密码');
-            $table->string('github_id')->unique()->nullable()->comment('关联github账号');
-            $table->string('api_token', 60)->unique()->nullable()->comment('api密钥');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -33,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('users');
     }
 }
