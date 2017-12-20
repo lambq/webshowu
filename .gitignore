@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /.idea
+.DS_Store
+.idea/*
 /.vagrant
 Homestead.json
 Homestead.yaml
